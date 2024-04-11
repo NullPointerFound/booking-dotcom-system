@@ -1,4 +1,4 @@
-package com.booking.system.commons.domain.core.domainobject;
+package com.booking.system.commons.domain.core.valueobject;
 
 import java.math.BigDecimal;
 
