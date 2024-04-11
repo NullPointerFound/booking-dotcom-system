@@ -15,6 +15,7 @@ public class Hotel extends AbstractDomainEntity<HotelId> {
     private final HotelAddress address;
     private final HotelCategoryId categoryId;
     private final LocalityId localityId;
+    private final Rooms rooms;
 
     public Hotel(
             final HotelId id,
@@ -22,7 +23,8 @@ public class Hotel extends AbstractDomainEntity<HotelId> {
             final String description,
             final HotelCategoryId categoryId,
             final HotelAddress address,
-            final LocalityId localityId
+            final LocalityId localityId,
+            final Rooms rooms
     ) {
         super(id);
         this.name = name;
@@ -30,6 +32,7 @@ public class Hotel extends AbstractDomainEntity<HotelId> {
         this.categoryId = categoryId;
         this.address = address;
         this.localityId = localityId;
+        this.rooms = rooms;
     }
 
     public String getName() {
@@ -50,5 +53,9 @@ public class Hotel extends AbstractDomainEntity<HotelId> {
 
     public LocalityId getLocalityId() {
         return localityId;
+    }
+
+    public Rooms getRooms() {
+        return rooms;
     }
 }
