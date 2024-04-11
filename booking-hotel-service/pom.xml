@@ -11,5 +11,11 @@
 
     <artifactId>booking-hotel-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.booking.system</groupId>
+            <artifactId>commons</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
