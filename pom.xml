@@ -7,6 +7,12 @@
     <groupId>com.booking.system</groupId>
     <artifactId>booking-dotcom-system</artifactId>
     <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>booking-hotel-service</module>
+        <module>commons</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
