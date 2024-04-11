@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class HotelCategoryId extends AbstractDomainEntityId<UUID> {
+
     private HotelCategoryId(final UUID value) {
         super(value);
     }
