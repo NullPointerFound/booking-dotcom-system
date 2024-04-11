@@ -13,4 +13,6 @@ public class Hotel {
         this.name = name;
         this.description = description;
     }
+
+
 }
