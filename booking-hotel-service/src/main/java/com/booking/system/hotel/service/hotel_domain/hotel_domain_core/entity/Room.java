@@ -1,10 +1,10 @@
-package com.booking.system.hotel.service.hotel_model.hotel_domain_core.entity;
+package com.booking.system.hotel.service.hotel_domain.hotel_domain_core.entity;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntity;
 import com.booking.system.commons.domain.core.valueobject.HotelId;
 import com.booking.system.commons.domain.core.valueobject.Money;
-import com.booking.system.hotel.service.hotel_model.hotel_domain_core.exception.HotelDomainException;
-import com.booking.system.hotel.service.hotel_model.hotel_domain_core.valueobject.RoomId;
+import com.booking.system.hotel.service.hotel_domain.hotel_domain_core.exception.HotelDomainException;
+import com.booking.system.hotel.service.hotel_domain.hotel_domain_core.valueobject.RoomId;
 import io.micrometer.common.util.StringUtils;
 import lombok.experimental.SuperBuilder;
 import com.booking.system.commons.message.ApplicationMessage;
