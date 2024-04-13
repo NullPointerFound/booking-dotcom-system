@@ -1,7 +1,10 @@
 package com.booking.system.hotel.service.hotel_model.hotel_domain_core.valueobject;
 
 import com.booking.system.hotel.service.hotel_model.hotel_domain_core.exception.HotelDomainException;
+import io.micrometer.common.util.StringUtils;
 import lombok.Builder;
+import com.booking.system.commons.message.ApplicationMessage;
+
 
 @Builder
 public class HotelAddress {
@@ -13,6 +16,15 @@ public class HotelAddress {
     public HotelAddress(final String zip, final String street) {
         this.zip = zip;
         this.street = street;
+    }
+
+    public void validate() {
+        if (StringUtils.isBlank(this.street)) {
+            throw new HotelDomainException(ApplicationMessage.HOTEL_STREET_INVALID);
+        }
+        if (StringUtils.isBlank(this.zip) || !this.zip.matches(ZIP_PATTERN)) {
+            throw new HotelDomainException(ApplicationMessage.HOTEL_ZIP_INVALID);
+        }
     }
 
     public String getZip() {

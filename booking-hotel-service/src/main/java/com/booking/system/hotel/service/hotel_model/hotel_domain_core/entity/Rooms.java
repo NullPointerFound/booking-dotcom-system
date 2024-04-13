@@ -24,7 +24,14 @@ public class Rooms extends AbstractDomainList<Room> {
         return new Rooms(List.of(rooms));
     }
 
+    public void validate() {
+        this.data().forEach(Room::validate);
+    }
 
+    public boolean notContainsId(final RoomId roomId) {
+        return this.data().stream()
+                .noneMatch(room -> roomId.equals(room.getId()));
+    }
     public List<String> asRawIds() {
         return this.data().stream()
                 .map(Room::getId)

@@ -16,6 +16,10 @@
             <groupId>com.booking.system</groupId>
             <artifactId>commons</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
