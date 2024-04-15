@@ -8,7 +8,7 @@ public record RegisterHotelInput(
         String description,
         String categoryId,
         String street,
-        String cep,
+        String zip,
         String localityId
 ) {
 }
