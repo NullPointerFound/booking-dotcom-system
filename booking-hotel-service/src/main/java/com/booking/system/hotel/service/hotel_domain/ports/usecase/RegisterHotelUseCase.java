@@ -7,5 +7,4 @@ import com.booking.system.hotel.service.hotel_domain.hotel_application_service.d
 public interface RegisterHotelUseCase {
 
     RegisterHotelOutput execute(RegisterHotelInput input);
-
 }
