@@ -1,4 +1,4 @@
-package com.booking.system.hotel.service.hotel_domain.hotel_application_service.dto;
+package com.booking.system.hotel.service.domain.application_service.dto;
 
 import java.util.List;
 

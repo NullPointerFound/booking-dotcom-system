@@ -1,4 +1,4 @@
-package com.booking.system.hotel.service.hotel_domain.hotel_domain_core.exception;
+package com.booking.system.hotel.service.domain.domain.exception;
 
 
 public final class HotelDomainException extends RuntimeException {

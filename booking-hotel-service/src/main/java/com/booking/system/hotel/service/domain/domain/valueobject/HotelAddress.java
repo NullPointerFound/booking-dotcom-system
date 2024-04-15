@@ -1,6 +1,6 @@
-package com.booking.system.hotel.service.hotel_domain.hotel_domain_core.valueobject;
+package com.booking.system.hotel.service.domain.domain.valueobject;
 
-import com.booking.system.hotel.service.hotel_domain.hotel_domain_core.exception.HotelDomainException;
+import com.booking.system.hotel.service.domain.domain.exception.HotelDomainException;
 import io.micrometer.common.util.StringUtils;
 import lombok.Builder;
 import com.booking.system.commons.message.ApplicationMessage;

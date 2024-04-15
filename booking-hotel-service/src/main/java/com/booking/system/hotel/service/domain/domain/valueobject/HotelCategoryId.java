@@ -1,4 +1,4 @@
-package com.booking.system.hotel.service.hotel_domain.hotel_domain_core.valueobject;
+package com.booking.system.hotel.service.domain.domain.valueobject;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntityId;
 import com.booking.system.commons.message.ApplicationMessage;
