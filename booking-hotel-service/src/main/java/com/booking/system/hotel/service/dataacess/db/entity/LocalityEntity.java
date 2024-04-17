@@ -1,6 +1,8 @@
 package com.booking.system.hotel.service.dataacess.db.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -27,15 +29,18 @@ public class LocalityEntity implements Serializable {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
 
-
+    @Size(max = 50)
+    @NotNull
     @Column(name = "city", nullable = false, length = 50)
     private String city;
 
-
+    @Size(max = 50)
+    @NotNull
     @Column(name = "state", nullable = false, length = 50)
     private String state;
 
-
+    @Size(max = 50)
+    @NotNull
     @Column(name = "country", nullable = false, length = 50)
     private String country;
 

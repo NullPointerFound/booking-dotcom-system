@@ -1,6 +1,8 @@
 package com.booking.system.hotel.service.dataacess.db.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -26,24 +28,30 @@ public class RoomEntity implements Serializable {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID id;
 
-
+    @Size(max = 30)
+    @NotNull
     @Column(name = "name", nullable = false, length = 30)
     private String name;
 
-
+    @Size(max = 100)
+    @NotNull
     @Column(name = "description", nullable = false, length = 100)
     private String description;
 
+    @NotNull
     @Column(name = "capacity", nullable = false)
     private Integer capacity;
 
+    @NotNull
     @Column(name = "current_price", nullable = false, precision = 10)
     private BigDecimal currentPrice;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "hotel_id", nullable = false)
     private HotelEntity hotel;
 
+    @NotNull
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 

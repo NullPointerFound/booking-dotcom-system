@@ -1,6 +1,8 @@
 package com.booking.system.hotel.service.dataacess.db.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -18,7 +20,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @Table(name = "hotel")
 public class HotelEntity implements Serializable {
-
     @Serial
     private static final long serialVersionUID = 6868561067067809596L;
 
@@ -27,26 +28,32 @@ public class HotelEntity implements Serializable {
     @Column(name = "id", nullable = false, length = 36)
     private UUID id;
 
+    @Size(max = 50)
+    @NotNull
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-
+    @Size(max = 500)
+    @NotNull
     @Column(name = "description", nullable = false, length = 500)
     private String description;
 
-
+    @Size(max = 9)
+    @NotNull
     @Column(name = "hotel_cep", nullable = false, length = 9)
     private String hotelCep;
 
-
+    @Size(max = 50)
+    @NotNull
     @Column(name = "hotel_street", nullable = false, length = 50)
     private String hotelStreet;
 
-
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "locality_id", nullable = false)
     private LocalityEntity locality;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private HotelCategoryEntity category;
