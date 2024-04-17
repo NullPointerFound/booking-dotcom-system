@@ -2,6 +2,8 @@ package com.booking.system.hotel.service.domain.application_service.dto;
 
 import lombok.Builder;
 
+import java.util.List;
+
 @Builder
 public record RegisterHotelInput(
         String name,
@@ -9,6 +11,8 @@ public record RegisterHotelInput(
         String categoryId,
         String street,
         String zip,
-        String localityId
+        String localityId,
+        List<RegisterHotelRoomInput> rooms
+
 ) {
 }
