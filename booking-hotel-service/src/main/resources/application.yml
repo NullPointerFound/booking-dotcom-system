@@ -1,0 +1,20 @@
+server:
+  port: ${HOTEL_SERVER_PORT:8001}
+  servlet:
+    context-path: /hotel-service
+spring:
+  application:
+    name: '@name@'
+    version: '1.0.0'
+  datasource:
+    url: jdbc:mysql://${HOTEL_DB_HOST:localhost}:${HOTEL_DB_PORT:3360}/${HOTEL_DB_NAME:hotel_db}?autoReconnect=true&useSSL=false&serverTimezone=UTC&enable
+    username: ${HOTEL_DB_USERNAME:root}
+    password: ${HOTEL_DB_PASSWORD:admin}
+    jpa:
+      open-in-view: false
+      show-sql: false
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
+          enable_lazy_load_no_trans: true
+          format_sql: true
