@@ -91,4 +91,28 @@ public class Room extends AbstractDomainEntity<RoomId> {
         this.setId(RoomId.newInstance());
         this.hotelId = hotelId;
     }
+
+    public HotelId getHotelId() {
+        return hotelId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public Money getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
 }
