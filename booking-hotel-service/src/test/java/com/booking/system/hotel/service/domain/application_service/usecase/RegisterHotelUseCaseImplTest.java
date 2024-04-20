@@ -28,8 +28,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class RegisterHotelUseCaseImplTest {
 
-
-
     private static final String CATEGORY_ID = "e1bf8402-9441-4774-8061-9444fc8bdb28";
     private static final String LOCALITY_ID = "9898b2f1-9861-42c5-a84f-42bba41fbe00";
     private RegisterHotelUseCase rhu;
