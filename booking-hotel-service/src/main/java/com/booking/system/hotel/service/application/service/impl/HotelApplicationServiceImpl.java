@@ -4,7 +4,9 @@ import com.booking.system.hotel.service.application.service.HotelApplicationServ
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelInput;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelOutput;
 import com.booking.system.hotel.service.domain.ports.usecase.RegisterHotelUseCase;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HotelApplicationServiceImpl implements HotelApplicationService {
 
     RegisterHotelUseCase registerHotelUseCase;
