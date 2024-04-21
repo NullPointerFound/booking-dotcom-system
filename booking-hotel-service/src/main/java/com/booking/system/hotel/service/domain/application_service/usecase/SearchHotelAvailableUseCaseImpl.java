@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 
 
-public abstract class SearchHotelAvailableUseCaseImpl implements SearchHotelAvailableUseCase {
+public class SearchHotelAvailableUseCaseImpl implements SearchHotelAvailableUseCase {
 
     private final HotelRepository hotelRepository;
     private final HotelUseCaseMapper hotelUseCaseMapper;
