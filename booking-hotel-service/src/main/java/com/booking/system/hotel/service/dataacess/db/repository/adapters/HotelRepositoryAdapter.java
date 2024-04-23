@@ -46,8 +46,16 @@ public class HotelRepositoryAdapter implements HotelRepository {
     }
 
     @Override
-    public List<SearchHotelAvailableQueryResult> searchHotelAvailableBy(String name, String category, String vity, String state) {
-        return List.of();
+    public List<SearchHotelAvailableQueryResult> searchHotelAvailableBy(
+            final String name,
+            final String category,
+            final String city,
+            final String state
+    ) {
+        return this.hotelJpaRepository.findAllAvailableHotelByParameters(name, category, city, state).stream()
+                .map(this.hotelDatabaseMapper::hotelEntityToSearchHotelAvailableQueryResult)
+                .toList();
     }
+
 
 }
