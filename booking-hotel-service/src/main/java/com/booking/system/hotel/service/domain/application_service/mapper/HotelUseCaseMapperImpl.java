@@ -49,7 +49,7 @@ public class HotelUseCaseMapperImpl implements HotelUseCaseMapper {
                 .id(queryResult.getHotelId().toString())
                 .name(queryResult.getHotelName())
                 .description(queryResult.getHotelDescription())
-                .address(queryResult.getHotelStreet() + " - " + queryResult.getHotelCep())
+                .address(queryResult.getHotelStreet() + " - " + queryResult.getHotelZip())
                 .category(queryResult.getHotelCategoryName())
                 .city(queryResult.getHotelCity())
                 .state(queryResult.getHotelState())

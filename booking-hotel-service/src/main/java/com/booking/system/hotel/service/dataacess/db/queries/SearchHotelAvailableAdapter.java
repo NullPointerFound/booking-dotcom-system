@@ -30,8 +30,8 @@ public class SearchHotelAvailableAdapter implements SearchHotelAvailableQueryRes
     }
 
     @Override
-    public String getHotelCep() {
-        return this.hotelEntity.getHotelCep();
+    public String getHotelZip() {
+        return this.hotelEntity.getHotelZip();
     }
 
     @Override

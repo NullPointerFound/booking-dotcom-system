@@ -12,7 +12,7 @@ public interface SearchHotelAvailableQueryResult {
 
     String getHotelDescription();
 
-    String getHotelCep();
+    String getHotelZip();
 
     String getHotelStreet();
 

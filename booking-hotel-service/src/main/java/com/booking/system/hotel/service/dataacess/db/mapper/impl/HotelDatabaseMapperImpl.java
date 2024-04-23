@@ -33,7 +33,7 @@ public class HotelDatabaseMapperImpl implements HotelDatabaseMapper {
                 .description(hotelEntity.getDescription())
                 .categoryId(HotelCategoryId.of(hotelEntity.getCategory().getId()))
                 .localityId(LocalityId.of(hotelEntity.getId()))
-                .address(new HotelAddress(hotelEntity.getHotelCep(), hotelEntity.getHotelStreet()))
+                .address(new HotelAddress(hotelEntity.getHotelZip(), hotelEntity.getHotelStreet()))
                 .rooms(Rooms.newInstance(
                         hotelEntity.getRooms().stream()
                                 .map(this::roomEntityToRoom)
@@ -46,7 +46,7 @@ public class HotelDatabaseMapperImpl implements HotelDatabaseMapper {
     public HotelEntity hotelToHotelEntity(final Hotel hotel) {
         return HotelEntity.builder()
                 .id(hotel.getId().getValue())
-                .hotelCep(hotel.getAddress().getZip())
+                .hotelZip(hotel.getAddress().getZip())
                 .hotelStreet(hotel.getAddress().getStreet())
                 .name(hotel.getName())
                 .description(hotel.getDescription())

@@ -1,8 +1,11 @@
 package com.booking.system.commons.application.dto.impl;
 
+import com.booking.system.commons.application.dto.CollectionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import com.booking.system.commons.application.dto.Response;
+
+import java.util.Collection;
 
 public class ResponseEntityAdapter<T> extends ResponseEntity<T> {
 
@@ -11,6 +14,13 @@ public class ResponseEntityAdapter<T> extends ResponseEntity<T> {
             final HttpStatus status
     ) {
         super(body, status);
+    }
+
+    public static <T> ResponseEntity<CollectionResponse<T>> items(final Collection<T> item) {
+
+        final var status = item.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+
+        return new ResponseEntityAdapter<>(ApiCollectionResponse.of(item), status);
     }
 
     public static <T> ResponseEntity<Response<T>> of(final T data) {

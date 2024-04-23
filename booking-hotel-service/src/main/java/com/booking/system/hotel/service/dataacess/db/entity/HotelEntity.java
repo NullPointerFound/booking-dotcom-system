@@ -40,8 +40,8 @@ public class HotelEntity implements Serializable {
 
     @Size(max = 9)
     @NotNull
-    @Column(name = "hotel_cep", nullable = false, length = 9)
-    private String hotelCep;
+    @Column(name = "hotel_zip", nullable = false, length = 9)
+    private String hotelZip;
 
     @Size(max = 50)
     @NotNull
