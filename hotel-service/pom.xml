@@ -9,7 +9,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>booking-hotel-service</artifactId>
+    <artifactId>hotel-service</artifactId>
     <name>booking-hotel-service</name>
     <description>hotel-service</description>
 

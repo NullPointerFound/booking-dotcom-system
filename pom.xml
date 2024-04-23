@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>booking-hotel-service</module>
+        <module>hotel-service</module>
         <module>commons</module>
         <module>booking-service</module>
     </modules>
