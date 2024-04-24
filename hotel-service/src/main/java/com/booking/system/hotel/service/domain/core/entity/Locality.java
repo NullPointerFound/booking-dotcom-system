@@ -1,7 +1,7 @@
-package com.booking.system.hotel.service.domain.domain.entity;
+package com.booking.system.hotel.service.domain.core.entity;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntity;
-import com.booking.system.hotel.service.domain.domain.valueobject.LocalityId;
+import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
 
 public class Locality extends AbstractDomainEntity<LocalityId> {
 

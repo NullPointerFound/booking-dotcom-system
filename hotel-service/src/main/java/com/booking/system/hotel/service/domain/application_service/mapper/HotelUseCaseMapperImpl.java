@@ -2,12 +2,12 @@ package com.booking.system.hotel.service.domain.application_service.mapper;
 
 import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.hotel.service.domain.application_service.dto.*;
-import com.booking.system.hotel.service.domain.domain.entity.Hotel;
-import com.booking.system.hotel.service.domain.domain.entity.Room;
-import com.booking.system.hotel.service.domain.domain.entity.Rooms;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelAddress;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelCategoryId;
-import com.booking.system.hotel.service.domain.domain.valueobject.LocalityId;
+import com.booking.system.hotel.service.domain.core.entity.Hotel;
+import com.booking.system.hotel.service.domain.core.entity.Room;
+import com.booking.system.hotel.service.domain.core.entity.Rooms;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelAddress;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
+import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
 import com.booking.system.hotel.service.domain.ports.mapper.HotelUseCaseMapper;
 import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
 

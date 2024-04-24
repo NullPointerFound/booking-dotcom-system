@@ -4,11 +4,10 @@ import com.booking.system.hotel.service.dataacess.db.mapper.HotelDatabaseMapper;
 import com.booking.system.hotel.service.dataacess.db.repository.HotelCategoryJpaRepository;
 import com.booking.system.hotel.service.dataacess.db.repository.HotelJpaRepository;
 import com.booking.system.hotel.service.dataacess.db.repository.RoomJpaRepository;
-import com.booking.system.hotel.service.domain.domain.entity.Hotel;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelCategoryId;
+import com.booking.system.hotel.service.domain.core.entity.Hotel;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
 import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
 import com.booking.system.hotel.service.domain.ports.repository.HotelRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

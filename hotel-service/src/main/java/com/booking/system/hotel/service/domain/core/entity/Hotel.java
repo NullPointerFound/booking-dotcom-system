@@ -1,12 +1,12 @@
-package com.booking.system.hotel.service.domain.domain.entity;
+package com.booking.system.hotel.service.domain.core.entity;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntity;
 import com.booking.system.commons.domain.core.valueobject.HotelId;
 import com.booking.system.commons.message.ApplicationMessage;
-import com.booking.system.hotel.service.domain.domain.exception.HotelDomainException;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelAddress;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelCategoryId;
-import com.booking.system.hotel.service.domain.domain.valueobject.LocalityId;
+import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelAddress;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
+import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
 import io.micrometer.common.util.StringUtils;
 import lombok.experimental.SuperBuilder;
 import org.springframework.util.CollectionUtils;

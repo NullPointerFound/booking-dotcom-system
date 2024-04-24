@@ -1,8 +1,7 @@
 package com.booking.system.hotel.service.domain.ports.repository;
 
-import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableOutput;
-import com.booking.system.hotel.service.domain.domain.entity.Hotel;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelCategoryId;
+import com.booking.system.hotel.service.domain.core.entity.Hotel;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
 import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
 
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.booking.system.hotel.service.domain.ports.queries;
 
 import com.booking.system.commons.domain.core.valueobject.HotelId;
-import com.booking.system.hotel.service.domain.domain.entity.Room;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.booking.system.hotel.service.dataacess.db.queries;
 
 import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.hotel.service.dataacess.db.entity.RoomEntity;
-import com.booking.system.hotel.service.domain.domain.valueobject.RoomId;
+import com.booking.system.hotel.service.domain.core.valueobject.RoomId;
 import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableRoomQueryResult;
 
 public class SearchHotelAvailableRoomAdapter implements SearchHotelAvailableRoomQueryResult {

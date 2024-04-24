@@ -9,10 +9,10 @@ import com.booking.system.hotel.service.domain.application_service.dto.RegisterH
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelOutput;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelRoomInput;
 import com.booking.system.hotel.service.domain.application_service.mapper.HotelUseCaseMapperImpl;
-import com.booking.system.hotel.service.domain.domain.entity.Hotel;
-import com.booking.system.hotel.service.domain.domain.exception.HotelDomainException;
-import com.booking.system.hotel.service.domain.domain.valueobject.HotelCategoryId;
-import com.booking.system.hotel.service.domain.domain.valueobject.LocalityId;
+import com.booking.system.hotel.service.domain.core.entity.Hotel;
+import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
+import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
+import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
 import com.booking.system.hotel.service.domain.ports.repository.HotelRepository;
 import com.booking.system.hotel.service.domain.ports.repository.LocalityRepository;
 import com.booking.system.hotel.service.domain.ports.usecase.RegisterHotelUseCase;
