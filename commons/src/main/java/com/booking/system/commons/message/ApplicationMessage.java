@@ -22,7 +22,8 @@ public class ApplicationMessage {
     public static final String HOTEL_ROOM_CURRENT_PRICE_INVALID = "hotel.room.current-price.must.not.be.zero-or-negative";
     public static final String HOTEL_CATEGORY_NOT_FOUND = "hotel.category.not.found";
     public static final String HOTEL_LOCALITY_NOT_FOUND = "hotel.locality.not.found";
-
+    public static final String BOOKING_NOT_NULL = "booking.must.be.not.null";
+    public static final String BOOKING_ROOM_NOT_NULL = "booking.room.must.not.be.null";
 
     private ApplicationMessage() {
     }
