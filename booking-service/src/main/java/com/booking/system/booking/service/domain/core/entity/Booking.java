@@ -15,8 +15,7 @@ public class Booking extends AbstractDomainEntity<BookingId> {
 
     private final ReservationOrderId reservationOrderId;
     private final CustomerId customerId;
-    private final LocalDate checkIn;
-    private final LocalDate checkOut;
+    private final BookingPeriod bookingPeriod;
     private final Money totalPrice;
     private final List<BookingRoom> bookingRooms;
     private final Integer guests;
@@ -28,8 +27,7 @@ public class Booking extends AbstractDomainEntity<BookingId> {
             final BookingId id,
             final ReservationOrderId reservationOrderId,
             final CustomerId customerId,
-            final LocalDate checkIn,
-            final LocalDate checkOut,
+            final BookingPeriod bookingPeriod,
             final Money totalPrice,
             final List<BookingRoom> bookingRooms,
             final Integer guests,
@@ -38,8 +36,7 @@ public class Booking extends AbstractDomainEntity<BookingId> {
         super(id);
         this.reservationOrderId = reservationOrderId;
         this.customerId = customerId;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
+        this.bookingPeriod = bookingPeriod;
         this.totalPrice = totalPrice;
         this.bookingRooms = bookingRooms;
         this.guests = guests;
@@ -57,12 +54,8 @@ public class Booking extends AbstractDomainEntity<BookingId> {
         return customerId;
     }
 
-    public LocalDate getCheckIn() {
-        return checkIn;
-    }
-
-    public LocalDate getCheckOut() {
-        return checkOut;
+    public BookingPeriod getBookingPeriod() {
+        return bookingPeriod;
     }
 
     public Money getTotalPrice() {

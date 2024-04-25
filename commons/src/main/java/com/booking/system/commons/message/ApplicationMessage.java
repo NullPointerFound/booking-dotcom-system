@@ -24,6 +24,9 @@ public class ApplicationMessage {
     public static final String HOTEL_LOCALITY_NOT_FOUND = "hotel.locality.not.found";
     public static final String BOOKING_NOT_NULL = "booking.must.be.not.null";
     public static final String BOOKING_ROOM_NOT_NULL = "booking.room.must.not.be.null";
+    public static final String BOOKING_PERIOD_CHECK_IN_NOT_NULL = "booking.period.check-in.must.not.be.null";
+    public static final String BOOKING_PERIOD_CHECK_OUT_NOT_NULL = "booking.period.check-out.must.not.be.null";
+    public static final String BOOKING_PERIOD_CHECK_IN_AFTER_CHECK_OUT = "booking.period.check-in.after.check-out";
 
     private ApplicationMessage() {
     }
