@@ -26,4 +26,11 @@ public class Room extends AbstractDomainEntity<RoomId> {
         this.quantity = quantity;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
 }

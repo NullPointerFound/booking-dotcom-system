@@ -27,6 +27,14 @@ public class ApplicationMessage {
     public static final String BOOKING_PERIOD_CHECK_IN_NOT_NULL = "booking.period.check-in.must.not.be.null";
     public static final String BOOKING_PERIOD_CHECK_OUT_NOT_NULL = "booking.period.check-out.must.not.be.null";
     public static final String BOOKING_PERIOD_CHECK_IN_AFTER_CHECK_OUT = "booking.period.check-in.after.check-out";
+    public static final String BOOKING_CUSTOMER_NOT_NULL = "booking.customer.must.not.be.null";
+    public static final String BOOKING_TOTAL_PRICE_INVALID = "booking.total-price.invalid";
+    public static final String BOOKING_STATUS_NOT_NULL = "booking.status.must.not.be.null";
+    public static final String BOOKING_NOT_FOUND = "booking.not.found";
+    public static final String CUSTOMER_RESERVATION_ORDER_TIMELINE_NOT_NULL = "customer.reservation-order.timeline.must.not.be.null";
+    public static final String CUSTOMER_RESERVATION_ORDER_STATUS_INVALID_STATE = "customer.reservation-order.status.invalid-state";
+    public static final String BOOKING_RESERVATION_ORDER_INVALID = "booking.reservation.order.must.not.be.null";
+
 
     private ApplicationMessage() {
     }

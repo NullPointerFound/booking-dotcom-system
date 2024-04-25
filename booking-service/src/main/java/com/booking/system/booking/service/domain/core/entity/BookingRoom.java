@@ -7,6 +7,8 @@ import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.commons.domain.core.valueobject.RoomId;
 import lombok.experimental.SuperBuilder;
 
+import java.math.BigDecimal;
+
 @SuperBuilder
 public class BookingRoom extends AbstractDomainEntity<BookingRoomId> {
 
@@ -14,6 +16,19 @@ public class BookingRoom extends AbstractDomainEntity<BookingRoomId> {
     private BookingId bookingId;
     private Integer quantity;
     private Money price;
+
+    public void initialize(final BookingId bookingId) {
+        this.setId(BookingRoomId.newInstance());
+        this.bookingId = bookingId;
+    }
+
+    public void validate() {
+        //TODO: need to be checked
+    }
+
+    public Money getTotalPrice() {
+        return this.price.multiply(new BigDecimal(this.quantity));
+    }
 
 
     public BookingRoom(
@@ -28,5 +43,21 @@ public class BookingRoom extends AbstractDomainEntity<BookingRoomId> {
         this.bookingId = bookingId;
         this.quantity = quantity;
         this.price = price;
+    }
+
+    public RoomId getRoomId() {
+        return roomId;
+    }
+
+    public BookingId getBookingId() {
+        return bookingId;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Money getPrice() {
+        return price;
     }
 }

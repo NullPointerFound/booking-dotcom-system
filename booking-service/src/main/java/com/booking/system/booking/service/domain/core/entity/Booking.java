@@ -5,10 +5,12 @@ import com.booking.system.booking.service.domain.core.valueobject.BookingId;
 import com.booking.system.commons.domain.core.AbstractDomainEntity;
 import com.booking.system.commons.domain.core.valueobject.*;
 import lombok.experimental.SuperBuilder;
+import com.booking.system.booking.service.domain.core.exception.BookingDomainException;
+import com.booking.system.commons.message.ApplicationMessage;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @SuperBuilder
 public class Booking extends AbstractDomainEntity<BookingId> {
@@ -45,6 +47,66 @@ public class Booking extends AbstractDomainEntity<BookingId> {
         this.status = status;
     }
 
+    public void initialize() {
+        this.setId(BookingId.newInstance());
+        this.status = BookingStatus.PENDING;
+        this.bookingRooms.forEach(room -> room.initialize(this.getId()));
+    }
+
+    public void validate() {
+        this.validateReservationOrderId();
+        this.bookingPeriod.validate();
+        this.validateCustomerId();
+        this.validateTotalPrice();
+        this.validateBookingRooms();
+        this.validateStatus();
+    }
+
+    private void validateStatus() {
+        if (this.status == null) {
+            throw new BookingDomainException(ApplicationMessage.BOOKING_STATUS_NOT_NULL);
+        }
+    }
+
+    private void validateBookingRooms() {
+        this.bookingRooms.forEach(BookingRoom::validate);
+    }
+
+    private void validateTotalPrice() {
+        final var totalItensPrice = this.bookingRooms.stream()
+                .map(BookingRoom::getTotalPrice)
+                .reduce(Money.ZERO, Money::add);
+        if (totalItensPrice.isNotEqual(this.totalPrice)) {
+            throw new BookingDomainException(ApplicationMessage.BOOKING_TOTAL_PRICE_INVALID);
+        }
+    }
+
+    private void validateCustomerId() {
+        if (this.customerId == null || this.customerId.empty()) {
+            throw new BookingDomainException(ApplicationMessage.BOOKING_CUSTOMER_NOT_NULL);
+        }
+    }
+
+    private void validateReservationOrderId() {
+        if (this.reservationOrderId == null || this.reservationOrderId.empty()) {
+            throw new BookingDomainException(ApplicationMessage.BOOKING_RESERVATION_ORDER_INVALID);
+        }
+    }
+
+    public boolean isBookingPeriodContainedIn(final BookingPeriod period) {
+        return this.bookingPeriod.isContainedIn(period);
+    }
+
+    public void changeStatusTo(final BookingStatus status) {
+        Objects.requireNonNull(status, ApplicationMessage.BOOKING_STATUS_NOT_NULL);
+        this.status = status;
+    }
+
+    public List<RoomId> getRoomsId() {
+        return this.bookingRooms.stream()
+                .map(BookingRoom::getRoomId)
+                .toList();
+    }
 
     public ReservationOrderId getReservationOrderId() {
         return reservationOrderId;
