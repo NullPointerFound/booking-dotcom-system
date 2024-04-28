@@ -1,4 +1,4 @@
-package com.booking.system.commons.message;
+package com.booking.system.commons.domain.message;
 
 public class ApplicationMessage {
 

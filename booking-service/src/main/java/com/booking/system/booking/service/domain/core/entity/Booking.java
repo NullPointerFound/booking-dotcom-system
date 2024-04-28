@@ -6,7 +6,7 @@ import com.booking.system.commons.domain.core.AbstractDomainEntity;
 import com.booking.system.commons.domain.core.valueobject.*;
 import lombok.experimental.SuperBuilder;
 import com.booking.system.booking.service.domain.core.exception.BookingDomainException;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 
 import java.time.Instant;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.booking.system.hotel.service.domain.application_service.usecase;
 
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelInput;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelOutput;
 import com.booking.system.hotel.service.domain.core.entity.Hotel;

@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import com.booking.system.booking.service.domain.core.exception.BookingDomainException;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

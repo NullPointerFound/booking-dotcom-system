@@ -7,7 +7,7 @@ import com.booking.system.booking.service.domain.core.entity.Room;
 import com.booking.system.booking.service.domain.core.exception.RoomNotFoundException;
 import com.booking.system.booking.service.domain.ports.repository.RoomRepository;
 import com.booking.system.commons.domain.core.valueobject.RoomId;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 

@@ -4,7 +4,7 @@ package com.booking.system.hotel.service.domain.application_service.usecase;
 import java.math.BigDecimal;
 import java.util.List;
 
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelInput;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelOutput;
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelRoomInput;

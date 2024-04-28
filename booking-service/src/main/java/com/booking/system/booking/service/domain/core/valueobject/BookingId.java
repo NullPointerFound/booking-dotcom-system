@@ -1,7 +1,7 @@
 package com.booking.system.booking.service.domain.core.valueobject;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntityId;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 
 import java.util.Objects;
 import java.util.UUID;

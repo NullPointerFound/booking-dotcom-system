@@ -7,7 +7,7 @@ import com.booking.system.hotel.service.domain.core.exception.HotelDomainExcepti
 import com.booking.system.hotel.service.domain.core.valueobject.RoomId;
 import io.micrometer.common.util.StringUtils;
 import lombok.experimental.SuperBuilder;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 
 
 @SuperBuilder

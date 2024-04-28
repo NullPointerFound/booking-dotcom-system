@@ -2,7 +2,7 @@ package com.booking.system.hotel.service.domain.core.entity;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntity;
 import com.booking.system.commons.domain.core.valueobject.HotelId;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelAddress;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;

@@ -3,7 +3,7 @@ package com.booking.system.hotel.service.domain.core.valueobject;
 import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
 import io.micrometer.common.util.StringUtils;
 import lombok.Builder;
-import com.booking.system.commons.message.ApplicationMessage;
+import com.booking.system.commons.domain.message.ApplicationMessage;
 
 
 @Builder
