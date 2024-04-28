@@ -5,6 +5,7 @@ import com.booking.system.booking.service.dataaccess.db.entity.BookingEntity;
 import com.booking.system.booking.service.dataaccess.db.entity.BookingRoomEntity;
 import com.booking.system.booking.service.dataaccess.db.entity.RoomEntity;
 import com.booking.system.booking.service.dataaccess.db.mapper.BookingDatabaseMapper;
+import com.booking.system.booking.service.dataaccess.db.repository.adapters.RoomRepositoryAdapter;
 import com.booking.system.booking.service.domain.core.entity.Booking;
 import com.booking.system.booking.service.domain.core.entity.BookingPeriod;
 import com.booking.system.booking.service.domain.core.entity.BookingRoom;
@@ -22,6 +23,11 @@ import java.util.stream.Collectors;
 @Component
 public class BookingDatabaseMapperImpl implements BookingDatabaseMapper {
 
+    private final RoomRepositoryAdapter roomRepositoryAdapter;
+
+    public BookingDatabaseMapperImpl(RoomRepositoryAdapter roomRepositoryAdapter) {
+        this.roomRepositoryAdapter = roomRepositoryAdapter;
+    }
 
     @Override
     public Booking bookingEntityToBooking(final BookingEntity entity) {
@@ -57,7 +63,7 @@ public class BookingDatabaseMapperImpl implements BookingDatabaseMapper {
                 .id(entity.getId().getValue())
                 .price(entity.getPrice().getValue())
                 .quantity(entity.getQuantity())
-                //Todo: adding .room(this.roomRepository.findRoomEntityById(entity.getRoomId()))
+                .room(this.roomRepositoryAdapter.findRoomEntityById(entity.getRoomId()))
                 .build();
     }
 
