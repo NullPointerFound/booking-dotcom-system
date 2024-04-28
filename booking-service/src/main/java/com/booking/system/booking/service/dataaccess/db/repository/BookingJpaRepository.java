@@ -3,12 +3,14 @@ package com.booking.system.booking.service.dataaccess.db.repository;
 import com.booking.system.booking.service.dataaccess.db.entity.BookingEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository
 public interface BookingJpaRepository extends JpaRepository<BookingEntity, UUID> {
 
     @Query("""
