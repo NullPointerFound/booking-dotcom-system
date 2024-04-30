@@ -2,8 +2,8 @@ package com.booking.system.hotel.service.dataacess.db.queries;
 
 import com.booking.system.commons.domain.core.valueobject.HotelId;
 import com.booking.system.hotel.service.dataacess.db.entity.HotelEntity;
-import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
-import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableRoomQueryResult;
+import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableQueryResult;
+import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableRoomQueryResult;
 
 import java.util.List;
 import java.util.stream.Collectors;

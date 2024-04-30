@@ -4,7 +4,7 @@ import com.booking.system.booking.service.dataaccess.db.mapper.BookingDatabaseMa
 import com.booking.system.booking.service.dataaccess.db.repository.BookingJpaRepository;
 import com.booking.system.booking.service.domain.core.entity.Booking;
 import com.booking.system.booking.service.domain.core.entity.BookingPeriod;
-import com.booking.system.booking.service.domain.ports.repository.BookingRepository;
+import com.booking.system.booking.service.domain.ports.spi.repository.BookingRepository;
 import com.booking.system.commons.domain.core.valueobject.ReservationOrderId;
 import com.booking.system.commons.domain.core.valueobject.RoomId;
 import org.springframework.stereotype.Component;

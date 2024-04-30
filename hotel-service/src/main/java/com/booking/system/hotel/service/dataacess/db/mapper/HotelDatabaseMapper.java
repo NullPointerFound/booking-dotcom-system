@@ -4,7 +4,7 @@ import com.booking.system.hotel.service.dataacess.db.entity.HotelEntity;
 import com.booking.system.hotel.service.dataacess.db.entity.RoomEntity;
 import com.booking.system.hotel.service.domain.core.entity.Hotel;
 import com.booking.system.hotel.service.domain.core.entity.Room;
-import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
+import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableQueryResult;
 
 import java.util.Collection;
 import java.util.Set;

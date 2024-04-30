@@ -1,4 +1,4 @@
-package com.booking.system.booking.service.domain.ports.mapper;
+package com.booking.system.booking.service.domain.ports.api.mapper;
 
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomInput;
 import com.booking.system.booking.service.domain.core.entity.Booking;

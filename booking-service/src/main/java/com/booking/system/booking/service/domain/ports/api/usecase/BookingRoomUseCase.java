@@ -1,4 +1,4 @@
-package com.booking.system.booking.service.domain.ports.usecase;
+package com.booking.system.booking.service.domain.ports.api.usecase;
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomOutput;
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomInput;
 

@@ -5,8 +5,8 @@ import com.booking.system.hotel.service.domain.application_service.dto.RegisterH
 import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelOutput;
 import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableInput;
 import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableOutput;
-import com.booking.system.hotel.service.domain.ports.usecase.RegisterHotelUseCase;
-import com.booking.system.hotel.service.domain.ports.usecase.SearchHotelAvailableUseCase;
+import com.booking.system.hotel.service.domain.ports.api.usecase.RegisterHotelUseCase;
+import com.booking.system.hotel.service.domain.ports.api.usecase.SearchHotelAvailableUseCase;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

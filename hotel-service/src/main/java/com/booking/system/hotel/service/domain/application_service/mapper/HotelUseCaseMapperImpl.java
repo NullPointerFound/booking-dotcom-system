@@ -8,8 +8,8 @@ import com.booking.system.hotel.service.domain.core.entity.Rooms;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelAddress;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
 import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
-import com.booking.system.hotel.service.domain.ports.mapper.HotelUseCaseMapper;
-import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
+import com.booking.system.hotel.service.domain.ports.api.mapper.HotelUseCaseMapper;
+import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableQueryResult;
 
 import java.util.stream.Collectors;
 

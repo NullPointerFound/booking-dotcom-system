@@ -15,7 +15,7 @@ import com.booking.system.hotel.service.domain.core.valueobject.HotelAddress;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
 import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
 import com.booking.system.hotel.service.domain.core.valueobject.RoomId;
-import com.booking.system.hotel.service.domain.ports.queries.SearchHotelAvailableQueryResult;
+import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableQueryResult;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;

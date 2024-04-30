@@ -2,9 +2,9 @@ package com.booking.system.hotel.service.domain.application_service.usecase;
 
 import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableInput;
 import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableOutput;
-import com.booking.system.hotel.service.domain.ports.mapper.HotelUseCaseMapper;
-import com.booking.system.hotel.service.domain.ports.repository.HotelRepository;
-import com.booking.system.hotel.service.domain.ports.usecase.SearchHotelAvailableUseCase;
+import com.booking.system.hotel.service.domain.ports.api.mapper.HotelUseCaseMapper;
+import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
+import com.booking.system.hotel.service.domain.ports.api.usecase.SearchHotelAvailableUseCase;
 
 import java.util.List;
 import java.util.stream.Collectors;

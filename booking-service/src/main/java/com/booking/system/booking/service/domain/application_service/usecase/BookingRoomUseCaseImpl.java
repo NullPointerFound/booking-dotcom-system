@@ -6,9 +6,9 @@ import com.booking.system.booking.service.domain.application_service.dto.Booking
 import com.booking.system.booking.service.domain.application_service.service.BookingInitializer;
 import com.booking.system.booking.service.domain.application_service.service.VerifyRoomAvailability;
 import com.booking.system.booking.service.domain.core.entity.Booking;
-import com.booking.system.booking.service.domain.ports.mapper.BookingUseCaseMapper;
-import com.booking.system.booking.service.domain.ports.repository.BookingRepository;
-import com.booking.system.booking.service.domain.ports.usecase.BookingRoomUseCase;
+import com.booking.system.booking.service.domain.ports.api.mapper.BookingUseCaseMapper;
+import com.booking.system.booking.service.domain.ports.spi.repository.BookingRepository;
+import com.booking.system.booking.service.domain.ports.api.usecase.BookingRoomUseCase;
 import com.booking.system.commons.domain.core.valueobject.CustomerReservationStatus;
 import com.booking.system.commons.domain.core.valueobject.FailureMessages;
 import lombok.extern.slf4j.Slf4j;

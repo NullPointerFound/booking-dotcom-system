@@ -1,4 +1,4 @@
-package com.booking.system.hotel.service.domain.ports.repository;
+package com.booking.system.hotel.service.domain.ports.spi.repository;
 
 import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
 

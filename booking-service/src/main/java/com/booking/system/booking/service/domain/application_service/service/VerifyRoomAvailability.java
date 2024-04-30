@@ -1,8 +1,8 @@
 package com.booking.system.booking.service.domain.application_service.service;
 
 import com.booking.system.booking.service.domain.core.entity.Booking;
-import com.booking.system.booking.service.domain.ports.repository.BookingRepository;
-import com.booking.system.booking.service.domain.ports.repository.RoomRepository;
+import com.booking.system.booking.service.domain.ports.spi.repository.BookingRepository;
+import com.booking.system.booking.service.domain.ports.spi.repository.RoomRepository;
 import com.booking.system.commons.domain.core.valueobject.BookingStatus;
 import com.booking.system.commons.domain.core.valueobject.FailureMessages;
 import lombok.extern.slf4j.Slf4j;

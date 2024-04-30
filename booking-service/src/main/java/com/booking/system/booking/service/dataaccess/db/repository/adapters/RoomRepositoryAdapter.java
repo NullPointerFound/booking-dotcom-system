@@ -5,7 +5,7 @@ import com.booking.system.booking.service.dataaccess.db.mapper.BookingDatabaseMa
 import com.booking.system.booking.service.dataaccess.db.repository.RoomJpaRepository;
 import com.booking.system.booking.service.domain.core.entity.Room;
 import com.booking.system.booking.service.domain.core.exception.RoomNotFoundException;
-import com.booking.system.booking.service.domain.ports.repository.RoomRepository;
+import com.booking.system.booking.service.domain.ports.spi.repository.RoomRepository;
 import com.booking.system.commons.domain.core.valueobject.RoomId;
 import com.booking.system.commons.domain.message.ApplicationMessage;
 import org.springframework.context.annotation.Lazy;

@@ -1,4 +1,4 @@
-package com.booking.system.booking.service.domain.ports.repository;
+package com.booking.system.booking.service.domain.ports.spi.repository;
 
 import com.booking.system.booking.service.domain.core.entity.Booking;
 import com.booking.system.booking.service.domain.core.entity.BookingPeriod;

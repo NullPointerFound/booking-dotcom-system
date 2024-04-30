@@ -5,7 +5,7 @@ import com.booking.system.booking.service.domain.application_service.dto.Booking
 import com.booking.system.booking.service.domain.core.entity.Booking;
 import com.booking.system.booking.service.domain.core.entity.BookingPeriod;
 import com.booking.system.booking.service.domain.core.entity.BookingRoom;
-import com.booking.system.booking.service.domain.ports.mapper.BookingUseCaseMapper;
+import com.booking.system.booking.service.domain.ports.api.mapper.BookingUseCaseMapper;
 import com.booking.system.commons.domain.core.valueobject.CustomerId;
 import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.commons.domain.core.valueobject.ReservationOrderId;

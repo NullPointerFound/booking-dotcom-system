@@ -1,4 +1,4 @@
-package com.booking.system.hotel.service.domain.ports.queries;
+package com.booking.system.hotel.service.domain.ports.spi.queries;
 
 import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.hotel.service.domain.core.valueobject.RoomId;
