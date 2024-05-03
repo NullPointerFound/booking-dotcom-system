@@ -14,6 +14,7 @@
     <description>hotel-service</description>
 
     <dependencies>
+
         <dependency>
             <groupId>com.booking.system</groupId>
             <artifactId>commons</artifactId>
