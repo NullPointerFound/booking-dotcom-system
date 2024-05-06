@@ -8,6 +8,8 @@ import lombok.Getter;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -25,6 +27,8 @@ public class BookingRoomRequestedEvent implements Event {
     private final Integer guests;
     private final LocalDate checkIn;
     private final LocalDate checkOut;
+    private final List<BookingRoomItemRepresentation> rooms;
+
 
     @Override
     public String toString() {

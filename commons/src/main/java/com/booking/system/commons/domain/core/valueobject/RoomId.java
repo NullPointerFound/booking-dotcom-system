@@ -31,3 +31,4 @@ public class RoomId extends AbstractDomainEntityId<UUID> {
     }
 
 }
+

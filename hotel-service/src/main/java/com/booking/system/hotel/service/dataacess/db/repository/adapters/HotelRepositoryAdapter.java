@@ -1,16 +1,19 @@
 package com.booking.system.hotel.service.dataacess.db.repository.adapters;
 
+import com.booking.system.commons.domain.core.valueobject.RoomId;
 import com.booking.system.hotel.service.dataacess.db.mapper.HotelDatabaseMapper;
 import com.booking.system.hotel.service.dataacess.db.repository.HotelCategoryJpaRepository;
 import com.booking.system.hotel.service.dataacess.db.repository.HotelJpaRepository;
 import com.booking.system.hotel.service.dataacess.db.repository.RoomJpaRepository;
 import com.booking.system.hotel.service.domain.core.entity.Hotel;
+import com.booking.system.hotel.service.domain.core.entity.Rooms;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
 import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableQueryResult;
 import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class HotelRepositoryAdapter implements HotelRepository {
@@ -54,6 +57,17 @@ public class HotelRepositoryAdapter implements HotelRepository {
         return this.hotelJpaRepository.findAllAvailableHotelByParameters(name, category, city, state).stream()
                 .map(this.hotelDatabaseMapper::hotelEntityToSearchHotelAvailableQueryResult)
                 .toList();
+    }
+
+    @Override
+    public Rooms findAllRoomsById(final List<? extends RoomId> roomIds) {
+        final var ids = roomIds.stream()
+                .map(RoomId::getValue)
+                .collect(Collectors.toList());
+
+        return this.roomJpaRepository.findAllById(ids).stream()
+                .map(this.hotelDatabaseMapper::roomEntityToRoom)
+                .collect(Collectors.toCollection(Rooms::of));
     }
 
 

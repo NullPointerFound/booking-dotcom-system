@@ -2,6 +2,7 @@ package com.booking.system.hotel.service.dataacess.db.mapper.impl;
 
 import com.booking.system.commons.domain.core.valueobject.HotelId;
 import com.booking.system.commons.domain.core.valueobject.Money;
+import com.booking.system.commons.domain.core.valueobject.RoomId;
 import com.booking.system.hotel.service.dataacess.db.entity.HotelCategoryEntity;
 import com.booking.system.hotel.service.dataacess.db.entity.HotelEntity;
 import com.booking.system.hotel.service.dataacess.db.entity.LocalityEntity;
@@ -14,7 +15,6 @@ import com.booking.system.hotel.service.domain.core.entity.Rooms;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelAddress;
 import com.booking.system.hotel.service.domain.core.valueobject.HotelCategoryId;
 import com.booking.system.hotel.service.domain.core.valueobject.LocalityId;
-import com.booking.system.hotel.service.domain.core.valueobject.RoomId;
 import com.booking.system.hotel.service.domain.ports.spi.queries.SearchHotelAvailableQueryResult;
 import org.springframework.stereotype.Component;
 
