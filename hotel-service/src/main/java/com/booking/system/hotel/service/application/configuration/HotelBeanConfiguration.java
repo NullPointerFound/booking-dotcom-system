@@ -1,9 +1,12 @@
 package com.booking.system.hotel.service.application.configuration;
 
 import com.booking.system.hotel.service.domain.application_service.mapper.HotelUseCaseMapperImpl;
+import com.booking.system.hotel.service.domain.application_service.usecase.BookingRoomRequestUseCaseImpl;
 import com.booking.system.hotel.service.domain.application_service.usecase.RegisterHotelUseCaseImpl;
 import com.booking.system.hotel.service.domain.application_service.usecase.SearchHotelAvailableUseCaseImpl;
 import com.booking.system.hotel.service.domain.ports.api.mapper.HotelUseCaseMapper;
+import com.booking.system.hotel.service.domain.ports.api.usecase.BookingRoomRequestUseCase;
+import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
 import com.booking.system.hotel.service.domain.ports.spi.repository.LocalityRepository;
 import com.booking.system.hotel.service.domain.ports.api.usecase.RegisterHotelUseCase;
@@ -35,5 +38,16 @@ public class HotelBeanConfiguration {
         return new SearchHotelAvailableUseCaseImpl(hotelRepository,hotelUseCaseMapper);
     }
 
+
+    @Bean
+    public BookingRoomRequestUseCase bookingRoomRequestedUseCase(
+            final HotelRepository hotelRepository,
+            final BookingRoomRequestedPublisher bookingRoomRequestedPublisher
+    ) {
+        return new BookingRoomRequestUseCaseImpl(
+                hotelRepository,
+                bookingRoomRequestedPublisher
+        );
+    }
 
 }

@@ -4,10 +4,7 @@ import com.booking.system.commons.application.dto.CollectionResponse;
 import com.booking.system.commons.application.dto.Response;
 import com.booking.system.commons.application.dto.impl.ResponseEntityAdapter;
 import com.booking.system.hotel.service.application.service.HotelApplicationService;
-import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelInput;
-import com.booking.system.hotel.service.domain.application_service.dto.RegisterHotelOutput;
-import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableInput;
-import com.booking.system.hotel.service.domain.application_service.dto.SearchHotelAvailableOutput;
+import com.booking.system.hotel.service.domain.application_service.dto.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +44,11 @@ public class HotelController {
         );
 
         return ResponseEntityAdapter.items(output);
+    }
 
+    @PostMapping("/booking")
+    public ResponseEntity<Response<BookingRoomOutput>> bookingRoom(@RequestBody final BookingRoomInput input) {
+        final var output = this.hotelApplicationService.bookingRoomRequest(input);
+        return ResponseEntityAdapter.of(output);
     }
 }

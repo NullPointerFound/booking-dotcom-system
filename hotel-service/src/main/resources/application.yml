@@ -9,12 +9,12 @@ spring:
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
     port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USERNAME:root}
-    password: ${RABBITMQ_PASSWORD:root}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
   datasource:
-    url: jdbc:mysql://${HOTEL_DB_HOST:localhost}:${HOTEL_DB_PORT:3360}/${HOTEL_DB_NAME:hotel_db}?autoReconnect=true&useSSL=false&serverTimezone=UTC&enable
-    username: ${HOTEL_DB_USERNAME:guest}
-    password: ${HOTEL_DB_PASSWORD:guest}
+    url: jdbc:mysql://${HOTEL_DB_HOST:localhost}:${HOTEL_DB_PORT:3360}/${HOTEL_DB_NAME:hotel_db}?autoReconnect=true&useSSL=true&serverTimezone=UTC&enable
+    username: ${HOTEL_DB_USERNAME:root}
+    password: ${HOTEL_DB_PASSWORD:admin}
   jpa:
     open-in-view: false
     show-sql: true
