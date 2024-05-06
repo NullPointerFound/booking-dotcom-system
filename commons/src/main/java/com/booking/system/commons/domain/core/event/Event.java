@@ -1,5 +1,7 @@
 package com.booking.system.commons.domain.core.event;
 
 
-public interface Event {
+import java.io.Serializable;
+
+public interface Event extends Serializable {
 }
