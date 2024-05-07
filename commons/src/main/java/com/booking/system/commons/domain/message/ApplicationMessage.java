@@ -35,6 +35,8 @@ public class ApplicationMessage {
     public static final String CUSTOMER_RESERVATION_ORDER_STATUS_INVALID_STATE = "customer.reservation-order.status.invalid-state";
     public static final String BOOKING_RESERVATION_ORDER_INVALID = "booking.reservation.order.must.not.be.null";
     public static final String HOTEL_ROOM_NOT_FOUND = "hotel.room.not.found";
+    public static final String HOTEL_ROOM_CAPACITY_EXCEEDED = "hotel.room.capacity.exceeded";
+    public static final String HOTEL_BOOKING_GUESTS_EXCEEDED = "hotel.booking.guests.exceeded";
 
 
     private ApplicationMessage() {

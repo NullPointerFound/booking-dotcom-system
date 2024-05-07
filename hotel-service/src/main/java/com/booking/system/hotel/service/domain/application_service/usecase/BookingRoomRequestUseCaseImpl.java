@@ -7,6 +7,7 @@ import com.booking.system.commons.domain.message.ApplicationMessage;
 import com.booking.system.hotel.service.domain.application_service.dto.BookingRoomInput;
 import com.booking.system.hotel.service.domain.application_service.dto.BookingRoomOutput;
 import com.booking.system.hotel.service.domain.core.entity.Room;
+import com.booking.system.hotel.service.domain.core.entity.Rooms;
 import com.booking.system.hotel.service.domain.core.event.BookingRoomItemRepresentation;
 import com.booking.system.hotel.service.domain.core.event.BookingRoomRequestedEvent;
 import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
@@ -19,7 +20,9 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.BinaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BookingRoomRequestUseCaseImpl implements BookingRoomRequestUseCase {
@@ -49,6 +52,8 @@ public class BookingRoomRequestUseCaseImpl implements BookingRoomRequestUseCase 
     public BookingRoomOutput execute(final BookingRoomInput input) {
         final var rooms = this.hotelRepository.findAllRoomsById(this.mapToRoomIds(input));
         final var reservationOrderId = ReservationOrderId.newInstance();
+        this.validateRooms(input.rooms(), rooms);
+        this.validateGuest(input, rooms);
 
         this.bookingRoomRequestedPublisher.publish(
                 BookingRoomRequestedEvent.builder()
@@ -102,5 +107,53 @@ public class BookingRoomRequestUseCaseImpl implements BookingRoomRequestUseCase 
                 ));
     }
 
+    private void validateGuest(final BookingRoomInput input, final Collection<? extends Room> rooms) {
+        final var guests = input.guests();
+
+        final Function<String, Integer> getRoomDto = (roomId) -> input.rooms().stream()
+                .filter(r -> roomId.equals(r.roomId()))
+                .findFirst()
+                .map(BookRoomItemInput::roomQuantity)
+                .orElseThrow(() -> new HotelDomainException(ApplicationMessage.HOTEL_ROOM_NOT_FOUND));
+
+        final var totalRoomsCapacity = rooms.stream()
+                .mapToInt(room -> room.getCapacity() * getRoomDto.apply(room.getId().toString()))
+                .sum();
+
+        if (guests > totalRoomsCapacity) {
+            throw new HotelDomainException(ApplicationMessage.HOTEL_BOOKING_GUESTS_EXCEEDED);
+        }
+    }
+
+
+    private void validateRooms(final Collection<BookRoomItemInput> input, final Rooms rooms) {
+        final var roomsQuantityGroupedById = this.groupQuantityByRoomId(input);
+
+        final var roomIds = input.stream()
+                .map(BookRoomItemInput::roomId)
+                .map(RoomId::of)
+                .toList();
+
+        final var hasUnknownRoom = roomIds.stream()
+                .anyMatch(rooms::notContainsId);
+
+        if (hasUnknownRoom) {
+            throw new HotelDomainException(ApplicationMessage.HOTEL_ROOM_NOT_FOUND);
+        }
+
+        for (final Room room : rooms) {
+            final var maybeRoomQuantity = Optional.ofNullable(roomsQuantityGroupedById.getOrDefault(
+                    room.getId(),
+                    null
+            ));
+            if (maybeRoomQuantity.isEmpty()) {
+                throw new HotelDomainException(ApplicationMessage.HOTEL_ROOM_NOT_FOUND);
+            }
+            if (!room.hasQuantityAvailable(maybeRoomQuantity.get())) {
+                throw new HotelDomainException(ApplicationMessage.HOTEL_ROOM_CAPACITY_EXCEEDED);
+            }
+
+        }
+    }
 
 }

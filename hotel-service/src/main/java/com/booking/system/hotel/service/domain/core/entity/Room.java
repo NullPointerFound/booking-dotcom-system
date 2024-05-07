@@ -115,4 +115,9 @@ public class Room extends AbstractDomainEntity<RoomId> {
     public Integer getQuantity() {
         return quantity;
     }
+
+    public boolean hasQuantityAvailable(final Integer quantity) {
+        return this.quantity >= quantity;
+    }
+
 }
