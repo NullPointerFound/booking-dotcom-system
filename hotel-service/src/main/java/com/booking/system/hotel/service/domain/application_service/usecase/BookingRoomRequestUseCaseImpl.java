@@ -8,8 +8,8 @@ import com.booking.system.hotel.service.domain.application_service.dto.BookingRo
 import com.booking.system.hotel.service.domain.application_service.dto.BookingRoomOutput;
 import com.booking.system.hotel.service.domain.core.entity.Room;
 import com.booking.system.hotel.service.domain.core.entity.Rooms;
-import com.booking.system.hotel.service.domain.core.event.BookingRoomItemRepresentation;
-import com.booking.system.hotel.service.domain.core.event.BookingRoomRequestedEvent;
+import com.booking.system.commons.domain.core.event.BookingRoomItemRepresentation;
+import com.booking.system.commons.domain.core.event.BookingRoomRequestedEvent;
 import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
 import com.booking.system.hotel.service.domain.ports.api.usecase.BookingRoomRequestUseCase;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;

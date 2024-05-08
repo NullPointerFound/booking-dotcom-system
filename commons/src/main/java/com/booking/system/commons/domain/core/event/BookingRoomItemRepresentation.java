@@ -1,6 +1,5 @@
-package com.booking.system.hotel.service.domain.core.event;
+package com.booking.system.commons.domain.core.event;
 
-import com.booking.system.commons.domain.core.event.Event;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

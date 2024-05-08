@@ -2,7 +2,7 @@ package com.booking.system.hotel.service.dataacess.messaging;
 
 import com.booking.system.hotel.service.application.configuration.properties.ExchangeProperties;
 import com.booking.system.hotel.service.application.configuration.properties.RoutingKeyProperties;
-import com.booking.system.hotel.service.domain.core.event.BookingRoomRequestedEvent;
+import com.booking.system.commons.domain.core.event.BookingRoomRequestedEvent;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
