@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Builder
 @AllArgsConstructor
-public final class BookingRoomFailedEvent  {
+public final class BookingRoomFailedEvent extends BookingRoomResponseEvent{
 
     private final Instant createdAt = Instant.now();
     private final String reservationOrderId;
