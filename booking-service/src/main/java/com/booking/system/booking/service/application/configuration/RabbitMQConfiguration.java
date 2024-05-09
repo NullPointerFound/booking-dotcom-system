@@ -5,6 +5,9 @@ import com.booking.system.booking.service.application.configuration.properties.Q
 import com.booking.system.booking.service.application.configuration.properties.RoutingKeyProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,10 +26,33 @@ public class RabbitMQConfiguration {
 
     private final ExchangeProperties exchangeProperties;
 
+
+    @Bean
+    public DirectExchange bookingRoomExchange() {
+        return new DirectExchange(this.exchangeProperties.bookingRoom());
+    }
+
+
     @Bean
     public Queue bookingRoomRequestedQueue() {
         return new Queue(this.queueProperties.bookingRoomRequested(), true);
     }
+
+    @Bean
+    public Queue bookingRoomConfirmationQueue() {
+        return new Queue(this.queueProperties.bookingRoomConfirmation(), true);
+    }
+
+    @Bean
+    public Binding bookingRoomConfirmationBinding(
+            final DirectExchange bookingRoomExchange,
+            final Queue bookingRoomConfirmationQueue
+    ) {
+        return BindingBuilder.bind(bookingRoomConfirmationQueue)
+                .to(bookingRoomExchange)
+                .with(this.routingKeyProperties.bookingRoomConfirmation());
+    }
+
 
     @Bean
     public MessageConverter jsonMessageConverter(final ObjectMapper objectMapper) {

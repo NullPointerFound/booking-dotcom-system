@@ -8,6 +8,7 @@ import com.booking.system.booking.service.domain.application_service.usecase.Boo
 import com.booking.system.booking.service.domain.ports.api.mapper.BookingUseCaseMapper;
 import com.booking.system.booking.service.domain.ports.api.messaging.BookingRoomRequestedHandler;
 import com.booking.system.booking.service.domain.ports.api.usecase.BookingRoomUseCase;
+import com.booking.system.booking.service.domain.ports.spi.messaging.publiser.BookingRoomResponsePublisher;
 import com.booking.system.booking.service.domain.ports.spi.repository.BookingRepository;
 import com.booking.system.booking.service.domain.ports.spi.repository.RoomRepository;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +20,13 @@ public class BookingBeanConfiguration {
     @Bean
     public BookingRoomRequestedHandler bookingRoomRequestedHandler(
             final BookingRoomUseCase bookingRoomUseCase,
-            final BookingUseCaseMapper bookingUseCaseMapper
+            final BookingUseCaseMapper bookingUseCaseMapper,
+            final BookingRoomResponsePublisher bookingRoomResponsePublisher
     ) {
         return new BookingRoomRequestedHandlerImpl(
                 bookingRoomUseCase,
-                bookingUseCaseMapper
+                bookingUseCaseMapper,
+                bookingRoomResponsePublisher
         );
     }
 
