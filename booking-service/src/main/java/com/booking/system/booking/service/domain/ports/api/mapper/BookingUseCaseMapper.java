@@ -16,5 +16,8 @@ public interface BookingUseCaseMapper {
             BookingRoomRequestedEvent event
     );
 
+    BookingRoomFailedEvent bookingRoomOutputToBookingRoomFailedEvent(BookingRoomOutput output);
+
+    BookingRoomPendingEvent bookingRoomOutputToBookingRoomResponseEvent(BookingRoomOutput output);
 
 }

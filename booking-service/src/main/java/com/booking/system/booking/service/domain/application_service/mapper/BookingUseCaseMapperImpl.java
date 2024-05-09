@@ -60,6 +60,37 @@ public class BookingUseCaseMapperImpl implements BookingUseCaseMapper {
                 .build();
     }
 
+    @Override
+    public BookingRoomFailedEvent bookingRoomOutputToBookingRoomFailedEvent(final BookingRoomOutput output) {
+        return BookingRoomFailedEvent.builder()
+                .reservationOrderId(output.booking().getReservationOrderId().toString())
+                .customerId(output.booking().getCustomerId().toString())
+                .checkIn(output.booking().getBookingPeriod().getCheckIn())
+                .checkOut(output.booking().getBookingPeriod().getCheckOut())
+                .status(output.status())
+                .failureMessages(output.failureMessages().data())
+                .build();
+    }
+
+    @Override
+    public BookingRoomPendingEvent bookingRoomOutputToBookingRoomResponseEvent(final BookingRoomOutput output) {
+        return BookingRoomPendingEvent.builder()
+                .bookingRoomId(output.booking().getId().toString())
+                .reservationOrderId(output.booking().getReservationOrderId().toString())
+                .customerId(output.booking().getCustomerId().toString())
+                .totalPrice(output.booking().getTotalPrice().getValue())
+                .guests(null) // TODO: Adding user to the booking module
+                .checkIn(output.booking().getBookingPeriod().getCheckIn())
+                .checkOut(output.booking().getBookingPeriod().getCheckOut())
+                .status(output.status())
+                .rooms(
+                        output.booking().getBookingRooms().stream()
+                                .map(this::bookingRoomItemInputToBookingRoom)
+                                .collect(Collectors.toList())
+                )
+                .build();
+    }
+
     private BookingRoom bookingRoomItemInputToBookingRoom(
             final BookingRoomItemInput item
     ) {
