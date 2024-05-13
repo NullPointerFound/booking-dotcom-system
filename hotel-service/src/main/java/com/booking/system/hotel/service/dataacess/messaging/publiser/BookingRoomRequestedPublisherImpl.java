@@ -1,4 +1,4 @@
-package com.booking.system.hotel.service.dataacess.messaging;
+package com.booking.system.hotel.service.dataacess.messaging.publiser;
 
 import com.booking.system.hotel.service.application.configuration.properties.ExchangeProperties;
 import com.booking.system.hotel.service.application.configuration.properties.RoutingKeyProperties;

@@ -32,5 +32,7 @@ app:
       booking-room: exchange.booking-room
     routing-key:
       booking-room-requested: routing-key.booking-room-requested
+      booking-room-confirmation: routing-key.booking-room-confirmation
     queue:
       booking-room-requested: booking-room-requested
+      booking-room-confirmation: booking-room-confirmation
