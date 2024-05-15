@@ -15,4 +15,6 @@ public record InitializeReservationOrderInput(
         LocalDate checkOut,
         CustomerReservationStatus status
 ) {
+
+
 }
