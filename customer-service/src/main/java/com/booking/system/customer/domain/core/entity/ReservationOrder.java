@@ -2,11 +2,14 @@ package com.booking.system.customer.domain.core.entity;
 
 import com.booking.system.commons.domain.core.AbstractDomainEntity;
 import com.booking.system.commons.domain.core.valueobject.*;
+import com.booking.system.commons.domain.message.ApplicationMessage;
+import com.booking.system.customer.domain.core.exception.CustomerDomainException;
 import com.booking.system.customer.domain.core.valueobject.Timeline;
 import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @SuperBuilder
 public class ReservationOrder extends AbstractDomainEntity<ReservationOrderId> {
@@ -25,6 +28,26 @@ public class ReservationOrder extends AbstractDomainEntity<ReservationOrderId> {
         super(id);
     }
 
+    public void initialize() {
+        if (Objects.isNull(this.getId())) {
+            this.setId(ReservationOrderId.newInstance());
+        }
+        this.updateStatus(CustomerReservationStatus.AWAITING_RESERVATION);
+    }
+
+
+    public void updateStatus(final CustomerReservationStatus status) {
+        this.currentStatus = status;
+        this.timeline.add(ReservationOrderTimeline.update(status));
+    }
+
+    public void updateToFailureStatus(final CustomerReservationStatus status, FailureMessages failureMessages) {
+        if (!CustomerReservationStatus.isFailureStatus(status)) {
+            throw new CustomerDomainException(ApplicationMessage.CUSTOMER_RESERVATION_ORDER_STATUS_INVALID_STATE);
+        }
+        this.currentStatus = status;
+        this.timeline.add(ReservationOrderTimeline.update(status, failureMessages));
+    }
 
     public Timeline getTimeline() {
         return timeline;
