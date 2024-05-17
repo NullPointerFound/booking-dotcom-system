@@ -37,6 +37,8 @@ public class ApplicationMessage {
     public static final String HOTEL_ROOM_NOT_FOUND = "hotel.room.not.found";
     public static final String HOTEL_ROOM_CAPACITY_EXCEEDED = "hotel.room.capacity.exceeded";
     public static final String HOTEL_BOOKING_GUESTS_EXCEEDED = "hotel.booking.guests.exceeded";
+    public static final String CUSTOMER_NOT_FOUND = "customer.not.found";
+
 
 
     private ApplicationMessage() {

@@ -1,6 +1,8 @@
 package com.booking.system.customer.domain.application_service.usecase;
 
 import com.booking.system.customer.domain.application_service.dto.InitializeReservationOrderInput;
+import com.booking.system.customer.domain.core.entity.ReservationOrder;
+import com.booking.system.customer.domain.core.exception.CustomerNotFoundException;
 import com.booking.system.customer.domain.ports.api.mapper.CustomerUseCaseMapper;
 import com.booking.system.customer.domain.ports.api.usecase.InitializeCustomerBookingUseCase;
 import com.booking.system.customer.domain.ports.spi.repository.CustomerRepository;
@@ -20,9 +22,19 @@ public class InitializeCustomerBookingUseCaseImpl implements InitializeCustomerB
         this.customerUseCaseMapper = customerUseCaseMapper;
     }
 
-    //TODO: NEED TO BE IMPLEMENTED
     @Override
-    public void execute(InitializeReservationOrderInput input) {
-
+    public void execute(final InitializeReservationOrderInput input) {
+        final var reservationOrder = this.customerUseCaseMapper.initializeReservationOrderInputToReservationOrder(input);
+        reservationOrder.initialize();
+        this.ensureCustomerExists(reservationOrder);
+        this.reservationOrderRepository.save(reservationOrder);
     }
+
+    private void ensureCustomerExists(final ReservationOrder reservationOrder) {
+        if (!this.customerRepository.customerExistsBy(reservationOrder.getCustomerId())) {
+            throw new CustomerNotFoundException();
+        }
+    }
+
 }
+
