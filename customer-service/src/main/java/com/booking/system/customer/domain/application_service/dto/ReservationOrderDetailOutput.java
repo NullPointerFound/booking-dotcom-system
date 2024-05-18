@@ -12,7 +12,7 @@ import java.util.List;
 public record ReservationOrderDetailOutput(
         String customerId,
         String customerName,
-        String customerCpf,
+        String customerEmail,
         String reservationOrderId,
         String hotelId,
         @JsonFormat(pattern = "dd/MM/yyyy")
