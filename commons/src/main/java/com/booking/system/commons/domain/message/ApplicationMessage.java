@@ -39,6 +39,7 @@ public class ApplicationMessage {
     public static final String HOTEL_BOOKING_GUESTS_EXCEEDED = "hotel.booking.guests.exceeded";
     public static final String CUSTOMER_NOT_FOUND = "customer.not.found";
     public static final String CUSTOMER_EMAIL_NOT_NULL = "customer.email.must.not.be.null";
+    public static final String CUSTOMER_RESERVATION_ORDER_NOT_FOUND = "customer.reservation-order.not.found";
 
 
 
