@@ -12,9 +12,10 @@ spring:
     username: ${RABBITMQ_USERNAME:guest}
     password: ${RABBITMQ_PASSWORD:guest}
   datasource:
-    url: jdbc:mysql://${HOTEL_DB_HOST:localhost}:${HOTEL_DB_PORT:3360}/${HOTEL_DB_NAME:booking_db}?autoReconnect=true&useSSL=false&serverTimezone=UTC&enable
-    username: ${HOTEL_DB_USERNAME:root}
-    password: ${HOTEL_DB_PASSWORD:admin}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${BOOKING_DB_HOST:localhost}:${BOOKING_DB_PORT:3360}/${BOOKING_DB_NAME:booking_db}?autoReconnect=true&useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
+    username: ${BOOKING_DB_USERNAME:user}
+    password: ${BOOKING_DB_PASSWORD:password}
   jpa:
     open-in-view: false
     show-sql: true
