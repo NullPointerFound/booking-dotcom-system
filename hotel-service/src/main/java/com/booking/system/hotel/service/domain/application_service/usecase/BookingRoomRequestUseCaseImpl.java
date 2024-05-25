@@ -1,5 +1,7 @@
 package com.booking.system.hotel.service.domain.application_service.usecase;
 
+import com.booking.system.commons.domain.core.event.CustomerBookingInitiatedEvent;
+import com.booking.system.commons.domain.core.valueobject.CustomerReservationStatus;
 import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.commons.domain.core.valueobject.ReservationOrderId;
 import com.booking.system.commons.domain.core.valueobject.RoomId;
@@ -13,6 +15,7 @@ import com.booking.system.commons.domain.core.event.BookingRoomRequestedEvent;
 import com.booking.system.hotel.service.domain.core.exception.HotelDomainException;
 import com.booking.system.hotel.service.domain.ports.api.usecase.BookingRoomRequestUseCase;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;
+import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.CustomerBookingRoomStatusUpdatedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
 import com.booking.system.hotel.service.domain.application_service.dto.BookRoomItemInput;
 
@@ -29,15 +32,18 @@ public class BookingRoomRequestUseCaseImpl implements BookingRoomRequestUseCase 
 
     private static final BinaryOperator<Integer> BINARY_FUNCTION_IDENTITY = (currentValue, newValue) -> currentValue;
     private final HotelRepository hotelRepository;
+    private final CustomerBookingRoomStatusUpdatedPublisher customerBookingRoomUpdatePublisher;
     private final BookingRoomRequestedPublisher bookingRoomRequestedPublisher;
 
 
     public BookingRoomRequestUseCaseImpl(
             final HotelRepository hotelRepository,
-            final BookingRoomRequestedPublisher bookingRoomRequestedPublisher
+            final BookingRoomRequestedPublisher bookingRoomRequestedPublisher,
+            final CustomerBookingRoomStatusUpdatedPublisher customerBookingRoomUpdatePublisher
     ) {
         this.bookingRoomRequestedPublisher = bookingRoomRequestedPublisher;
         this.hotelRepository = hotelRepository;
+        this.customerBookingRoomUpdatePublisher = customerBookingRoomUpdatePublisher;
     }
 
 
@@ -71,6 +77,29 @@ public class BookingRoomRequestUseCaseImpl implements BookingRoomRequestUseCase 
                                                         .quantity(r.roomQuantity())
                                                         .price(this.getItemPrice(r, rooms).getValue())
                                                         .build()
+                                        )
+                                        .collect(Collectors.toList())
+                        )
+                        .build()
+        );
+
+        this.customerBookingRoomUpdatePublisher.publish(
+                CustomerBookingInitiatedEvent.builder()
+                        .customerId(input.customerId())
+                        .reservationOrderId(reservationOrderId.getValue().toString())
+                        .hotelId(input.hotelId())
+                        .guests(input.guests())
+                        .totalPrice(this.getTotalPrice(input.rooms(), rooms).getValue())
+                        .checkIn(input.checkIn())
+                        .checkOut(input.checkOut())
+                        .status(CustomerReservationStatus.AWAITING_RESERVATION)
+                        .rooms(
+                                input.rooms().stream()
+                                        .map(r -> BookingRoomItemRepresentation.builder()
+                                                .roomId(r.roomId())
+                                                .quantity(r.roomQuantity())
+                                                .price(this.getItemPrice(r, rooms).getValue())
+                                                .build()
                                         )
                                         .collect(Collectors.toList())
                         )
