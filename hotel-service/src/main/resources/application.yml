@@ -30,9 +30,12 @@ app:
   rabbitmq:
     exchange:
       booking-room: exchange.booking-room
+      customer-booking: exchange.customer-booking
     routing-key:
       booking-room-requested: routing-key.booking-room-requested
       booking-room-confirmation: routing-key.booking-room-confirmation
+      customer-booking-update: routing-key.customer-booking-update
     queue:
       booking-room-requested: booking-room-requested
       booking-room-confirmation: booking-room-confirmation
+      customer-booking-update: customer-booking-update

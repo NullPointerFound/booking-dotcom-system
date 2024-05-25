@@ -14,8 +14,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${BOOKING_DB_HOST:localhost}:${BOOKING_DB_PORT:3360}/${BOOKING_DB_NAME:booking_db}?autoReconnect=true&useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
-    username: ${BOOKING_DB_USERNAME:user}
-    password: ${BOOKING_DB_PASSWORD:password}
+    username: ${BOOKING_DB_USERNAME:root}
+    password: ${BOOKING_DB_PASSWORD:admin}
   jpa:
     open-in-view: false
     show-sql: true

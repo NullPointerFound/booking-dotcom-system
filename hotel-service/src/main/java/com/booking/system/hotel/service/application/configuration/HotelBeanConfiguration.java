@@ -9,6 +9,7 @@ import com.booking.system.hotel.service.domain.ports.api.mapper.HotelUseCaseMapp
 import com.booking.system.hotel.service.domain.ports.api.messaging.BookingRoomResponseHandler;
 import com.booking.system.hotel.service.domain.ports.api.usecase.BookingRoomRequestUseCase;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;
+import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.CustomerBookingRoomStatusUpdatedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
 import com.booking.system.hotel.service.domain.ports.spi.repository.LocalityRepository;
 import com.booking.system.hotel.service.domain.ports.api.usecase.RegisterHotelUseCase;
@@ -44,11 +45,14 @@ public class HotelBeanConfiguration {
     @Bean
     public BookingRoomRequestUseCase bookingRoomRequestedUseCase(
             final HotelRepository hotelRepository,
-            final BookingRoomRequestedPublisher bookingRoomRequestedPublisher
+            final BookingRoomRequestedPublisher bookingRoomRequestedPublisher,
+            final CustomerBookingRoomStatusUpdatedPublisher customerBookingRoomUpdatePublisher
+
     ) {
         return new BookingRoomRequestUseCaseImpl(
                 hotelRepository,
-                bookingRoomRequestedPublisher
+                bookingRoomRequestedPublisher,
+                customerBookingRoomUpdatePublisher
         );
     }
 

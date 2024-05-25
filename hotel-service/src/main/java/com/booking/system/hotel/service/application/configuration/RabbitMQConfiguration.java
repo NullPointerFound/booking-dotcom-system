@@ -30,9 +30,21 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
+    public DirectExchange customerBookingExchange() { return new DirectExchange(this.exchangeProperties.customerBooking()); }
+
+    @Bean
     public Queue bookingRoomRequestedQueue() {
         return new Queue(this.queueProperties.bookingRoomRequested(), true);
     }
+
+    @Bean
+    public Queue bookingRoomConfirmationQueue() { return new Queue(this.queueProperties.bookingRoomConfirmation(), true); }
+
+    @Bean
+    public Queue customerBookingUpdateQueue() {
+        return new Queue(this.queueProperties.customerBookingUpdate(), true);
+    }
+
 
     @Bean
     public Binding bookingRoomRequestedBinding(
@@ -42,10 +54,6 @@ public class RabbitMQConfiguration {
         return BindingBuilder.bind(bookingRoomRequestedQueue)
                 .to(bookingRoomExchange)
                 .with(this.routingKeyProperties.bookingRoomRequested());
-    }
-    @Bean
-    public Queue bookingRoomConfirmationQueue() {
-        return new Queue(this.queueProperties.bookingRoomConfirmation(), true);
     }
 
     @Bean
@@ -58,6 +66,15 @@ public class RabbitMQConfiguration {
                 .with(this.routingKeyProperties.bookingRoomConfirmation());
     }
 
+    @Bean
+    public Binding customerBookingUpdateBinding(
+            final DirectExchange customerBookingExchange,
+            final Queue customerBookingUpdateQueue
+    ) {
+        return BindingBuilder.bind(customerBookingUpdateQueue)
+                .to(customerBookingExchange)
+                .with(this.routingKeyProperties.customerBookingUpdate());
+    }
 
     @Bean
     public MessageConverter jsonMessageConverter(final ObjectMapper objectMapper) {
