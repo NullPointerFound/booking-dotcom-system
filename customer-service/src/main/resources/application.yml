@@ -7,6 +7,11 @@ spring:
   application:
     name: '@name@'
     version: '1.0.0'
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
   datasource:
     url: jdbc:mysql://${CUSTOMER_DB_HOST:localhost}:${CUSTOMER_DB_PORT:3360}/${CUSTOMER_DB_NAME:customer_db}?autoReconnect=true&useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
     username: ${HOTEL_DB_USERNAME:root}
@@ -21,3 +26,12 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         enable_lazy_load_no_trans: true
         format_sql: true
+app:
+  rabbitmq:
+    exchange:
+      customer-booking: exchange.customer-booking
+    routing-key:
+      customer-booking-update: routing-key.customer-booking-update
+    queue:
+      customer-booking-update: customer-booking-update
+
