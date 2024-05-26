@@ -1,5 +1,7 @@
 package com.booking.system.customer.domain.application_service.mapper;
 
+import com.booking.system.commons.domain.core.event.CustomerBookingInitiatedEvent;
+import com.booking.system.commons.domain.core.event.CustomerBookingStatusUpdatedEvent;
 import com.booking.system.commons.domain.core.valueobject.CustomerId;
 import com.booking.system.commons.domain.core.valueobject.HotelId;
 import com.booking.system.commons.domain.core.valueobject.Money;
@@ -7,6 +9,7 @@ import com.booking.system.commons.domain.core.valueobject.ReservationOrderId;
 import com.booking.system.customer.domain.application_service.dto.InitializeReservationOrderInput;
 import com.booking.system.customer.domain.application_service.dto.ReservationOrderDetailOutput;
 import com.booking.system.customer.domain.application_service.dto.TimelineItem;
+import com.booking.system.customer.domain.application_service.dto.UpdateCustomerBookingStatusInput;
 import com.booking.system.customer.domain.core.entity.Customer;
 import com.booking.system.customer.domain.core.entity.ReservationOrder;
 import com.booking.system.customer.domain.core.entity.ReservationOrderTimeline;
@@ -48,6 +51,30 @@ public class CustomerUseCaseMapperImpl implements CustomerUseCaseMapper {
                 .build();
     }
 
+    @Override
+    public InitializeReservationOrderInput customerBookingInitiatedEventToInitializeCustomerBookingInput(final CustomerBookingInitiatedEvent event) {
+        return new InitializeReservationOrderInput(
+                event.getReservationOrderId(),
+                event.getCustomerId(),
+                event.getHotelId(),
+                event.getTotalPrice(),
+                event.getGuests(),
+                event.getCheckIn(),
+                event.getCheckOut(),
+                event.getStatus()
+        );
+    }
+
+    @Override
+    public UpdateCustomerBookingStatusInput customerBookingStatusUpdateEventToUpdateCustomerBookingStatusInput(
+            final CustomerBookingStatusUpdatedEvent event
+    ) {
+        return new UpdateCustomerBookingStatusInput(
+                event.getCustomerId(),
+                event.getReservationOrderId(),
+                event.getStatus()
+        );
+    }
     private TimelineItem reservationOrderTimelineToTimelineItem(final ReservationOrderTimeline entity) {
         return new TimelineItem(
                 entity.getStatus(),
