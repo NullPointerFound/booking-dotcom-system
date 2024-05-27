@@ -14,6 +14,7 @@
         <module>commons</module>
         <module>booking-service</module>
         <module>customer-service</module>
+        <module>payment-service</module>
     </modules>
 
     <parent>
