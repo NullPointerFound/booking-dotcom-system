@@ -6,7 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public record RoutingKeyProperties(
         String bookingRoomRequested,
         String bookingRoomConfirmation,
-        String customerBookingUpdate
+        String customerBookingUpdate,
+        String paymentRequest,
+        String paymentConfirmation
 ) {
 
 }
