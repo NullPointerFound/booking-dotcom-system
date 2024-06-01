@@ -13,6 +13,9 @@ spring:
     password: ${RABBITMQ_PASSWORD:guest}
 
 app:
+  payment:
+    mock:
+      failure-chance-percentage: ${FAILURE_CHANCE_PERCENTAGE:90}
   rabbitmq:
     exchange:
       payment: exchange.payment
