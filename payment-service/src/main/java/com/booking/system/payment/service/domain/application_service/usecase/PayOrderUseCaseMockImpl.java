@@ -9,13 +9,13 @@ import com.booking.system.payment.service.domain.ports.api.usecase.PayOrderUseCa
 
 import java.util.Random;
 
-public class PayOrderUseCaseImpl implements PayOrderUseCase {
+public class PayOrderUseCaseMockImpl implements PayOrderUseCase {
 
     private final PaymentUseCaseMapper paymentUseCaseMapper;
 
     private final Integer failureChancePercentage;
 
-    public PayOrderUseCaseImpl(
+    public PayOrderUseCaseMockImpl(
             final PaymentUseCaseMapper paymentUseCaseMapper,
             final Integer failureChancePercentage
     ) {
