@@ -2,14 +2,17 @@ package com.booking.system.hotel.service.application.configuration;
 
 import com.booking.system.hotel.service.domain.application_service.mapper.HotelUseCaseMapperImpl;
 import com.booking.system.hotel.service.domain.application_service.messaging.BookingRoomResponseHandlerImpl;
+import com.booking.system.hotel.service.domain.application_service.messaging.PaymentResponseHandlerImpl;
 import com.booking.system.hotel.service.domain.application_service.usecase.BookingRoomRequestUseCaseImpl;
 import com.booking.system.hotel.service.domain.application_service.usecase.RegisterHotelUseCaseImpl;
 import com.booking.system.hotel.service.domain.application_service.usecase.SearchHotelAvailableUseCaseImpl;
 import com.booking.system.hotel.service.domain.ports.api.mapper.HotelUseCaseMapper;
 import com.booking.system.hotel.service.domain.ports.api.messaging.BookingRoomResponseHandler;
+import com.booking.system.hotel.service.domain.ports.api.messaging.PaymentResponseHandler;
 import com.booking.system.hotel.service.domain.ports.api.usecase.BookingRoomRequestUseCase;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.CustomerBookingRoomStatusUpdatedPublisher;
+import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.PaymentRequestedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
 import com.booking.system.hotel.service.domain.ports.spi.repository.LocalityRepository;
 import com.booking.system.hotel.service.domain.ports.api.usecase.RegisterHotelUseCase;
@@ -58,8 +61,16 @@ public class HotelBeanConfiguration {
 
 
     @Bean
-    public BookingRoomResponseHandler bookingRoomResponseHandler() {
-        return new BookingRoomResponseHandlerImpl();
+    public BookingRoomResponseHandler bookingRoomResponseHandler(
+            final CustomerBookingRoomStatusUpdatedPublisher customerBookingRoomUpdatedPublisher,
+            final PaymentRequestedPublisher paymentRequestedPublisher
+    ) {
+        return new BookingRoomResponseHandlerImpl(customerBookingRoomUpdatedPublisher, paymentRequestedPublisher);
+    }
+
+    @Bean
+    public PaymentResponseHandler paymentResponseHandler() {
+        return new PaymentResponseHandlerImpl();
     }
 
 }

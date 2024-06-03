@@ -39,10 +39,13 @@ public class BookingRoomResponseHandlerImpl implements BookingRoomResponseHandle
             }
             case final BookingRoomConfirmedEvent e -> {
 
+                log.info("Received a BookingRoomConfirmedEvent {}", e.getClass());
                 // TODO: Publish an Event to Customer Service and Notification service
             }
             case final BookingRoomFailedEvent e -> {
                 // TODO: Publish an Event to Customer Service and Notification service
+                log.info("Received a BookingRoomFailedEvent {}", e.getClass());
+
             }
             default -> throw new IllegalStateException(
                     "Failed on handling sub-type of BookingRoomResponseEvent: Unknown event"
