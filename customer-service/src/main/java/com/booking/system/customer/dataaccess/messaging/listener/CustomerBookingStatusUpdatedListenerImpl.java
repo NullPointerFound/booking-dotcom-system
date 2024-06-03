@@ -19,13 +19,16 @@ public class CustomerBookingStatusUpdatedListenerImpl implements CustomerBooking
 
     @Override
     @RabbitListener(queues = "${app.rabbitmq.queue.customer-booking-update}")
-    public void listen(final List<CustomerBookingStatusUpdatedEvent> events) {
-        log.info("CustomerBookingStatusUpdatedEvent received: {}", events.size());
-        try {
-            for (final var event : events) {
+    public void listen(final CustomerBookingStatusUpdatedEvent event) {
+//        log.info("CustomerBookingStatusUpdatedEvent received: {}", event.size());
+        log.info(
+                "BookingRoomRequestedEvent received {}",
+                event
+        );
+        try{
                 this.handler.handle(event);
             }
-        } catch (final Exception e) {
+         catch (final Exception e) {
             log.error("An error occurred while trying processing CustomerBookingStatusUpdatedEvent", e);
         }
     }

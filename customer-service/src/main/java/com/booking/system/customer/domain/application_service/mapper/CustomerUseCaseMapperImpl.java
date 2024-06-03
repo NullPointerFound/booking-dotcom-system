@@ -3,10 +3,7 @@ package com.booking.system.customer.domain.application_service.mapper;
 import com.booking.system.commons.domain.core.event.CustomerBookingFailureStatusUpdateEvent;
 import com.booking.system.commons.domain.core.event.CustomerBookingInitiatedEvent;
 import com.booking.system.commons.domain.core.event.CustomerBookingStatusUpdatedEvent;
-import com.booking.system.commons.domain.core.valueobject.CustomerId;
-import com.booking.system.commons.domain.core.valueobject.HotelId;
-import com.booking.system.commons.domain.core.valueobject.Money;
-import com.booking.system.commons.domain.core.valueobject.ReservationOrderId;
+import com.booking.system.commons.domain.core.valueobject.*;
 import com.booking.system.customer.domain.application_service.dto.*;
 import com.booking.system.customer.domain.core.entity.Customer;
 import com.booking.system.customer.domain.core.entity.ReservationOrder;
@@ -75,8 +72,15 @@ public class CustomerUseCaseMapperImpl implements CustomerUseCaseMapper {
     }
 
     @Override
-    public UpdateCustomerBookingFailureStatusInput customerBookingFailureStatusUpdateEventToUpdateCustomerBookingFailureStatusInput(CustomerBookingFailureStatusUpdateEvent event) {
-        return null;
+    public UpdateCustomerBookingFailureStatusInput customerBookingFailureStatusUpdateEventToUpdateCustomerBookingFailureStatusInput(
+            final CustomerBookingFailureStatusUpdateEvent event
+    ) {
+        return new UpdateCustomerBookingFailureStatusInput(
+                event.getCustomerId(),
+                event.getReservationOrderId(),
+                event.getStatus(),
+                FailureMessages.newInstance(event.getFailureMessages())
+        );
     }
 
     private TimelineItem reservationOrderTimelineToTimelineItem(final ReservationOrderTimeline entity) {

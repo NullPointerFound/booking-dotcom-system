@@ -8,6 +8,6 @@ import java.util.List;
 @FunctionalInterface
 public interface CustomerBookingStatusUpdatedListener {
 
-    void listen(List<CustomerBookingStatusUpdatedEvent> event);
+    void listen(CustomerBookingStatusUpdatedEvent event);
 
 }
