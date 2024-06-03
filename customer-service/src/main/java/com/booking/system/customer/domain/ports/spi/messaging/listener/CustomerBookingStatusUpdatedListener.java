@@ -5,9 +5,10 @@ import com.booking.system.commons.domain.core.event.CustomerBookingStatusUpdated
 
 import java.util.List;
 
+
 @FunctionalInterface
 public interface CustomerBookingStatusUpdatedListener {
 
-    void listen(CustomerBookingStatusUpdatedEvent event);
+    void listen(List<CustomerBookingStatusUpdatedEvent> event);
 
 }
