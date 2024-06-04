@@ -38,14 +38,20 @@ public class BookingRoomResponseHandlerImpl implements BookingRoomResponseHandle
                 log.info("Payment service notified | reservationOrderId={}", e.getReservationOrderId());
             }
             case final BookingRoomConfirmedEvent e -> {
-
-                log.info("Received a BookingRoomConfirmedEvent {}", e.getClass());
-                // TODO: Publish an Event to Customer Service and Notification service
+                log.info("Booking room confirmed, notifying customer service | reservationOrderId={}", e.getReservationOrderId());
+                final var bookingRoomStatusUpdatedEvent = this.bookingRoomConfirmedEventToCustomerBookingCompletedEvent(e);
+                this.customerBookingRoomUpdatedPublisher.publish(bookingRoomStatusUpdatedEvent);
+                log.info("Customer service notified | reservationOrderId={}", e.getReservationOrderId());
             }
             case final BookingRoomFailedEvent e -> {
-                // TODO: Publish an Event to Customer Service and Notification service
-                log.info("Received a BookingRoomFailedEvent {}", e.getClass());
-
+                log.info(
+                        "Booking room failed with error messages \"{}\". Notifying customer service | reservationOrderId={}",
+                        String.join(", ", e.getFailureMessages()),
+                        e.getReservationOrderId()
+                );
+                final var bookingRoomStatusUpdatedEvent = this.bookingRoomFailedEventToCustomerBookingRejectedEvent(e);
+                this.customerBookingRoomUpdatedPublisher.publish(bookingRoomStatusUpdatedEvent);
+                log.info("Customer service notified | reservationOrderId={}", e.getReservationOrderId());
             }
             default -> throw new IllegalStateException(
                     "Failed on handling sub-type of BookingRoomResponseEvent: Unknown event"
@@ -69,6 +75,23 @@ public class BookingRoomResponseHandlerImpl implements BookingRoomResponseHandle
                 .bookingRoomId(event.getBookingRoomId())
                 .customerId(event.getCustomerId())
                 .totalPrice(event.getTotalPrice())
+                .build();
+    }
+
+    private CustomerBookingCompletedEvent bookingRoomConfirmedEventToCustomerBookingCompletedEvent(final BookingRoomConfirmedEvent event) {
+        return CustomerBookingCompletedEvent.builder()
+                .reservationOrderId(event.getReservationOrderId())
+                .customerId(event.getCustomerId())
+                .status(CustomerReservationStatus.RESERVED)
+                .build();
+    }
+
+    private CustomerBookingStatusUpdatedEvent bookingRoomFailedEventToCustomerBookingRejectedEvent(final BookingRoomFailedEvent event) {
+        return CustomerBookingRejectedEvent.builder()
+                .reservationOrderId(event.getReservationOrderId())
+                .failureMessages(event.getFailureMessages())
+                .customerId(event.getCustomerId())
+                .status(CustomerReservationStatus.RESERVATION_FAILED)
                 .build();
     }
 }

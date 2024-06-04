@@ -9,7 +9,7 @@ import java.time.Instant;
 @Getter
 @SuperBuilder
 public abstract sealed class CustomerBookingStatusUpdatedEvent
-        implements Event permits CustomerBookingFailureStatusUpdateEvent, CustomerBookingInitiatedEvent, CustomerBookingPaymentRequestedEvent {
+        implements Event permits CustomerBookingFailureStatusUpdateEvent, CustomerBookingInitiatedEvent, CustomerBookingPaymentRequestedEvent, CustomerBookingCompletedEvent {
 
     private final Instant createdAt = Instant.now();
     private final String reservationOrderId;
