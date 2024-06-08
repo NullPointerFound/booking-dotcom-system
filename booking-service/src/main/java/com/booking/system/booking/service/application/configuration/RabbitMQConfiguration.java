@@ -14,8 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.MessageConverter;
 
-
-
 @Configuration
 @AllArgsConstructor
 public class RabbitMQConfiguration {
@@ -26,12 +24,10 @@ public class RabbitMQConfiguration {
 
     private final ExchangeProperties exchangeProperties;
 
-
     @Bean
     public DirectExchange bookingRoomExchange() {
         return new DirectExchange(this.exchangeProperties.bookingRoom());
     }
-
 
     @Bean
     public Queue bookingRoomRequestedQueue() {
@@ -44,6 +40,11 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
+    public Queue bookingRoomStatusChangedQueue() {
+        return new Queue(this.queueProperties.bookingRoomStatusChanged(), true);
+    }
+
+    @Bean
     public Binding bookingRoomConfirmationBinding(
             final DirectExchange bookingRoomExchange,
             final Queue bookingRoomConfirmationQueue
@@ -53,9 +54,9 @@ public class RabbitMQConfiguration {
                 .with(this.routingKeyProperties.bookingRoomConfirmation());
     }
 
-
     @Bean
     public MessageConverter jsonMessageConverter(final ObjectMapper objectMapper) {
         return new Jackson2JsonMessageConverter(objectMapper);
     }
+
 }
