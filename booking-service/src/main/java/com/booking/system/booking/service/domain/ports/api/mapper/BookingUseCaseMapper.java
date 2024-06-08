@@ -2,10 +2,12 @@ package com.booking.system.booking.service.domain.ports.api.mapper;
 
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomInput;
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomOutput;
+import com.booking.system.booking.service.domain.application_service.dto.UpdateBookingStatusInput;
 import com.booking.system.booking.service.domain.core.entity.Booking;
 import com.booking.system.commons.domain.core.event.BookingRoomFailedEvent;
 import com.booking.system.commons.domain.core.event.BookingRoomPendingEvent;
 import com.booking.system.commons.domain.core.event.BookingRoomRequestedEvent;
+import com.booking.system.commons.domain.core.event.BookingRoomStatusUpdatedEvent;
 
 public interface BookingUseCaseMapper {
 
@@ -19,5 +21,8 @@ public interface BookingUseCaseMapper {
     BookingRoomFailedEvent bookingRoomOutputToBookingRoomFailedEvent(BookingRoomOutput output);
 
     BookingRoomPendingEvent bookingRoomOutputToBookingRoomResponseEvent(BookingRoomOutput output);
+
+    UpdateBookingStatusInput bookingRoomStatusUpdatedEventToUpdateBookingRoomStatusInput(BookingRoomStatusUpdatedEvent event);
+
 
 }
