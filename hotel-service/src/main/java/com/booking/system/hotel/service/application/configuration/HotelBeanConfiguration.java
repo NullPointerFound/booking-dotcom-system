@@ -11,6 +11,7 @@ import com.booking.system.hotel.service.domain.ports.api.messaging.BookingRoomRe
 import com.booking.system.hotel.service.domain.ports.api.messaging.PaymentResponseHandler;
 import com.booking.system.hotel.service.domain.ports.api.usecase.BookingRoomRequestUseCase;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomRequestedPublisher;
+import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.BookingRoomStatusChangedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.CustomerBookingRoomStatusUpdatedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.messaging.publisher.PaymentRequestedPublisher;
 import com.booking.system.hotel.service.domain.ports.spi.repository.HotelRepository;
@@ -69,8 +70,11 @@ public class HotelBeanConfiguration {
     }
 
     @Bean
-    public PaymentResponseHandler paymentResponseHandler() {
-        return new PaymentResponseHandlerImpl();
+    public PaymentResponseHandler paymentResponseHandler(
+            final CustomerBookingRoomStatusUpdatedPublisher customerBookingRoomStatusUpdatedPublisher,
+            final BookingRoomStatusChangedPublisher bookingRoomStatusChangedPublisher
+    ) {
+        return new PaymentResponseHandlerImpl(customerBookingRoomStatusUpdatedPublisher, bookingRoomStatusChangedPublisher);
     }
 
 }

@@ -3,14 +3,12 @@ package com.booking.system.booking.service.domain.application_service.mapper;
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomInput;
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomItemInput;
 import com.booking.system.booking.service.domain.application_service.dto.BookingRoomOutput;
+import com.booking.system.booking.service.domain.application_service.dto.UpdateBookingStatusInput;
 import com.booking.system.booking.service.domain.core.entity.Booking;
 import com.booking.system.booking.service.domain.core.entity.BookingPeriod;
 import com.booking.system.booking.service.domain.core.entity.BookingRoom;
 import com.booking.system.booking.service.domain.ports.api.mapper.BookingUseCaseMapper;
-import com.booking.system.commons.domain.core.event.BookingRoomFailedEvent;
-import com.booking.system.commons.domain.core.event.BookingRoomItemRepresentation;
-import com.booking.system.commons.domain.core.event.BookingRoomPendingEvent;
-import com.booking.system.commons.domain.core.event.BookingRoomRequestedEvent;
+import com.booking.system.commons.domain.core.event.*;
 import com.booking.system.commons.domain.core.valueobject.CustomerId;
 import com.booking.system.commons.domain.core.valueobject.Money;
 import com.booking.system.commons.domain.core.valueobject.ReservationOrderId;
@@ -91,6 +89,14 @@ public class BookingUseCaseMapperImpl implements BookingUseCaseMapper {
                 .build();
     }
 
+    @Override
+    public UpdateBookingStatusInput bookingRoomStatusUpdatedEventToUpdateBookingRoomStatusInput(final BookingRoomStatusUpdatedEvent event) {
+        return new UpdateBookingStatusInput(
+                ReservationOrderId.of(event.getReservationOrderId()),
+                CustomerId.of(event.getCustomerId()),
+                event.getStatus()
+        );
+    }
     private BookingRoom bookingRoomItemInputToBookingRoom(
             final BookingRoomItemInput item
     ) {

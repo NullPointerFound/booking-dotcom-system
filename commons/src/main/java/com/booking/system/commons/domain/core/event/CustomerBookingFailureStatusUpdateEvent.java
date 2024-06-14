@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @SuperBuilder
-public abstract sealed class CustomerBookingFailureStatusUpdateEvent extends CustomerBookingStatusUpdatedEvent permits CustomerBookingRejectedEvent {
+public abstract sealed class CustomerBookingFailureStatusUpdateEvent extends CustomerBookingStatusUpdatedEvent permits CustomerBookingRejectedEvent,CustomerBookingPaymentFailedEvent {
 
 
     private final List<String> failureMessages;
