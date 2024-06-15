@@ -60,7 +60,6 @@ public class HotelBeanConfiguration {
         );
     }
 
-
     @Bean
     public BookingRoomResponseHandler bookingRoomResponseHandler(
             final CustomerBookingRoomStatusUpdatedPublisher customerBookingRoomUpdatedPublisher,

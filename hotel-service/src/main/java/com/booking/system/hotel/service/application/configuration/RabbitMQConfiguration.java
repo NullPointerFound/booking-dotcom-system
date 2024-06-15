@@ -30,11 +30,13 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
-    public DirectExchange customerBookingExchange() { return new DirectExchange(this.exchangeProperties.customerBooking()); }
-
-    @Bean
     public DirectExchange paymentExchange() {
         return new DirectExchange(this.exchangeProperties.payment());
+    }
+
+    @Bean
+    public DirectExchange customerBookingExchange() {
+        return new DirectExchange(this.exchangeProperties.customerBooking());
     }
 
     @Bean
@@ -43,12 +45,10 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
-    public Queue bookingRoomConfirmationQueue() { return new Queue(this.queueProperties.bookingRoomConfirmation(), true); }
-
-    @Bean
-    public Queue customerBookingUpdateQueue() {
-        return new Queue(this.queueProperties.customerBookingUpdate(), true);
+    public Queue bookingRoomConfirmationQueue() {
+        return new Queue(this.queueProperties.bookingRoomConfirmation(), true);
     }
+
     @Bean
     public Queue paymentRequestQueue() {
         return new Queue(this.queueProperties.paymentRequest(), true);
@@ -59,6 +59,15 @@ public class RabbitMQConfiguration {
         return new Queue(this.queueProperties.paymentConfirmation(), true);
     }
 
+    @Bean
+    public Queue customerBookingUpdateQueue() {
+        return new Queue(this.queueProperties.customerBookingUpdate(), true);
+    }
+
+    @Bean
+    public Queue bookingRoomStatusChangedQueue() {
+        return new Queue(this.queueProperties.bookingRoomStatusChanged(), true);
+    }
 
     @Bean
     public Binding bookingRoomRequestedBinding(
@@ -78,16 +87,6 @@ public class RabbitMQConfiguration {
         return BindingBuilder.bind(bookingRoomConfirmationQueue)
                 .to(bookingRoomExchange)
                 .with(this.routingKeyProperties.bookingRoomConfirmation());
-    }
-
-    @Bean
-    public Binding customerBookingUpdateBinding(
-            final DirectExchange customerBookingExchange,
-            final Queue customerBookingUpdateQueue
-    ) {
-        return BindingBuilder.bind(customerBookingUpdateQueue)
-                .to(customerBookingExchange)
-                .with(this.routingKeyProperties.customerBookingUpdate());
     }
 
     @Bean
@@ -111,7 +110,28 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
+    public Binding customerBookingUpdateBinding(
+            final DirectExchange customerBookingExchange,
+            final Queue customerBookingUpdateQueue
+    ) {
+        return BindingBuilder.bind(customerBookingUpdateQueue)
+                .to(customerBookingExchange)
+                .with(this.routingKeyProperties.customerBookingUpdate());
+    }
+
+    @Bean
+    public Binding bookingRoomStatusChangedBinding(
+            final DirectExchange bookingRoomExchange,
+            final Queue bookingRoomStatusChangedQueue
+    ) {
+        return BindingBuilder.bind(bookingRoomStatusChangedQueue)
+                .to(bookingRoomExchange)
+                .with(this.routingKeyProperties.bookingRoomStatusChanged());
+    }
+
+    @Bean
     public MessageConverter jsonMessageConverter(final ObjectMapper objectMapper) {
         return new Jackson2JsonMessageConverter(objectMapper);
     }
+
 }
