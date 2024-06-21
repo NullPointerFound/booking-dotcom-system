@@ -1,5 +1,5 @@
 server:
-  port: ${BOOKING_SERVER_PORT:8001}
+  port: ${BOOKING_SERVER_PORT:8004}
   servlet:
     context-path: /booking-service
 spring:

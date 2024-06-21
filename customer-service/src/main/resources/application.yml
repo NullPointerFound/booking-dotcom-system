@@ -1,5 +1,5 @@
 server:
-  port: ${CUSTOMER_SERVER_PORT:8004}
+  port: ${CUSTOMER_SERVER_PORT:8002}
   address: 0.0.0.0
   servlet:
     context-path: /customer-service
