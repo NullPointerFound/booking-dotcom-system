@@ -85,3 +85,34 @@ The system is designed to be **modular**, **scalable**, and **fault-tolerant**, 
 3. Install RabbitMQ and ensure it is running.
 
 ### Installation
+<<<<<<< HEAD
+
+Clone the repository:
+
+````
+git clone https://github.com/NullPointerFound/booking-dotcom-system.git
+cd booking-dotcom-system
+````
+
+Create a Docker volume for each service to persist data:
+
+````
+docker volume create --name=hotel-db-volume --driver local --opt type=none --opt device=$(pwd)/docker/volume/hotel-db/mysql --opt o=bind
+docker volume create --name=booking-db-volume --driver local --opt type=none --opt device=$(pwd)/docker/volume/booking-db/mysql --opt o=bind
+docker volume create --name=customer-db-volume --driver local --opt type=none --opt device=$(pwd)/docker/volume/customer-db/mysql --opt o=bind
+````
+
+Navigate to the docker directory and start the application: 
+
+````
+cd cd .\docker\
+docker-compose -p booking-dotcom-system-api -f common.yml -f services.yml up -d
+````
+
+This command will:
+
+- Build and start all services as defined in the docker-compose files.
+- Run the system in detached mode (-d), so you can continue using the terminal.
+
+The application should now be running!
+=======
